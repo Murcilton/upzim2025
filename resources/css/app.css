@@ -42,7 +42,6 @@ body {
 
 .btnCreate {
     position: relative;
-
 }
 
 .controls {
@@ -58,7 +57,7 @@ body {
 .panel {
     position: relative;
     background-color: white;
-    z-index: 9999;
+    z-index: 2;
     padding: 25px;
     top: 120px;
     width: 50%;
@@ -105,13 +104,62 @@ body {
     border-radius: 18px;
 }
 
+.editModal {
+    position: absolute;
+    transition: 0.5s ease;
+    border-radius: 18px;
+    top: 180px;
+}
+
+.modal-body {
+    border: none;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.modal {
+    backdrop-filter: blur(7px);
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.selectContext {
+    text-align: center;
+}
+
+.inputEdit option:hover{
+    margin-left: 20px;
+}
+
+.inputEdit {
+    margin-top: 10px;
+    border-radius: 10px;
+    
+}
+
+.descriptionEdit {
+ scrollbar-width: thin;
+}
+
+.modal-backdrop {
+    background-color: transparent !important; /* Убираем затемнение */
+}
+
 .windows {
     position: relative;
     width: 100%;
 }
 
 .window:hover .editButton {
-    margin: 3px;
+    margin-right: 7px;
 }
 
 .editButton {
@@ -120,10 +168,25 @@ body {
     width: 45px;
     height: 40px;
     top: 20px;
-    right: 20px;
+    right: 50px;
 }
 
 .editButton:hover {
+    scale: 1.2;
+    box-shadow: none;
+}
+
+.deleteButton {
+    transition: 0.5s ease;
+    position: absolute;
+    font-size: 20px;
+    width: 35px;
+    height: 40px;
+    top: 20px;
+    right: 23px;
+}
+
+.deleteButton:hover {
     scale: 1.2;
     box-shadow: none;
 }
@@ -145,7 +208,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 
 .window:hover {
-    margin-right: 5px;
+    margin-right: 3px;
 }
 
 .title {

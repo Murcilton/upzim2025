@@ -19,3 +19,12 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [ListController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::post('/edit/{id}', [ListController::class, 'edit'])->name('edit');
+Route::post('/create', [ListController::class, 'create'])->name('create');
+
+Route::delete('/tasks/{id}', [ListController::class, 'destroy'])->name('delete');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
