@@ -48,7 +48,6 @@ body {
     position: relative;
     left: 70px;
     display: flex;
-    
     gap: 10px;
     flex-direction: row;
     white-space: nowrap;
@@ -235,6 +234,18 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.24);
 }
 
+.sDanger {
+    color: rgb(255, 0, 0);
+}
+
+.sSucсess {
+    color: rgb(0, 255, 0);
+}
+
+.sDepleted {
+    color: rgb(186, 186, 186);
+}
+
 .deadline {
     transition: 0.9s ease;
     background-color: white;
@@ -270,3 +281,42 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     scroll-behavior: smooth;
 }
 
+.dropdown-button {
+    transition: 0.5s ease;
+}
+
+.dropdown-title {
+    position: relative;
+    right: 17px;
+}
+
+.dropdown {
+    transition: 0.5s ease;
+    border: 1px solid;
+    position: absolute;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown li {
+    transition: 0.5s ease;
+    display: none;
+    visibility: hidden;
+    position: relative;
+    margin-top: 3px;
+}
+
+.dropdown ul {
+    list-style-type: none;
+}
+
+.dropdown-items {
+    margin-top: 6px;
+}
+
+.dropdown:hover li{
+    visibility: visible;
+    display: block;
+}

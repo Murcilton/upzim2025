@@ -9,7 +9,21 @@
                 style="--fa-primary-color: #dbdbdb; --fa-secondary-color: #dbdbdb;"></i>
         </div>
         <div class="controls">
-            <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задание</button>
+            <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу</button>
+            
+            <div class="dropdown-button">
+                <ul class="dropdown">
+                    <div class="dropdown-title">
+                        Сортировать по
+                    </div>
+                    <div class="dropdown-items">
+                        <li>Статусу</li>
+                        <li>Дедлайну</li>
+                        <li>Содержимому</li>
+                    </div>
+                </ul>
+            </div>
+
         </div>
 
     </div>
@@ -21,7 +35,15 @@
                         {{ $task->name }}
                     </div>
                     <div class="status">
-                        {{ $task->status }}
+                        <span class="
+                        @if ($task->status == 'Активно') 
+                        sSucсess 
+                        @elseif ($task->status == 'Завершено')
+                        sDanger
+                        @elseif ($task->status == 'Ожидание')
+                        sDepleted
+                        @endif">{{ $task->status }}
+                    </span>
                     </div>
                     <div class="deadline">
                         До {{ $task->deadline }}
@@ -71,7 +93,7 @@
             <!-- Modal для удаления -->
 <div class="modal fade" id="deleteModal{{$task->id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content editModal">
             <div class="modal-header">
                 <h5 class="modal-title" id="deleteModalLabel">Подтвердите удаление</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -83,8 +105,8 @@
                 <form action="{{ route('delete', $task->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
-                    <button type="submit" class="btn btn-danger">Удалить</button>
+                    <button type="submit" class="btnnav" style="color: rgb(255, 0, 0)">Удалить</button>
+                    <button type="button" class="btnnav" data-bs-dismiss="modal">Отмена</button>
                 </form>
             </div>
         </div>
