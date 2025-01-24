@@ -14,12 +14,21 @@
             <div class="dropdown-button">
                 <ul class="dropdown">
                     <div class="dropdown-title">
-                        Сортировать по
+                        <span>Сортировать по</span>
                     </div>
                     <div class="dropdown-items">
                         <li>Статусу</li>
                         <li>Дедлайну</li>
-                        <li>Содержимому</li>
+                        <li>
+                            <span class="dropdownLayerBtn">Содержимому</span>
+                            <ul class="dropdownLayer">
+                                <div class="dropdown-items-layer">
+                                    <li>Название</li>
+                                    <li>Описание</li>
+                                    
+                                </div>
+                            </ul>
+                        </li>
                     </div>
                 </ul>
             </div>

@@ -281,42 +281,104 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     scroll-behavior: smooth;
 }
 
-.dropdown-button {
-    transition: 0.5s ease;
-}
-
 .dropdown-title {
+    pointer-events: all;
+    cursor: default;
     position: relative;
+    font-weight: 500;
     right: 17px;
 }
 
 .dropdown {
-    transition: 0.5s ease;
-    border: 1px solid;
+    pointer-events: none;
+    transition: all 0.5s ease, box-shadow 1s ease;
+    padding-top: 5px;
+    border-radius: 18px;
+    max-height: 36px;
     position: absolute;
     background-color: white;
     display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.dropdown li {
-    transition: 0.5s ease;
-    display: none;
-    visibility: hidden;
-    position: relative;
-    margin-top: 3px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .dropdown ul {
     list-style-type: none;
 }
 
+.dropdown li {
+    list-style: none;
+    transition: 0.5s ease;
+    opacity: 0; 
+    width: 100%;
+    transform: translateY(-10px); 
+    margin-top: 3px; 
+    margin-right: 10px;
+    visibility: hidden;
+}
+
 .dropdown-items {
     margin-top: 6px;
 }
+.dropdown-items-layer {
+    width: 100%;
+}
 
-.dropdown:hover li{
-    visibility: visible;
+.dropdown:hover {
+    pointer-events: all;
+    max-height: 500px;
+    padding-bottom: 10px;
+    box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.24);
+}
+
+.dropdown:hover li {
+    opacity: 1; 
+    transform: translateY(0); 
+    visibility: visible; 
+}
+
+.dropdown-items li:hover {
+    margin-left: 2px;
+}
+
+.dropdownLayer {
+    margin-top: -6px; 
+    
+    transition: 0.5s ease;
+    max-height: 0px;
+    width: 100%;
+    opacity: 0;
+}
+
+.dropdownLayerBtn {
     display: block;
+    cursor: default;
+    padding-bottom: 6px;
+}
+
+.dropdownLayer li {
+    list-style: none;
+    transition: 0.5s ease;
+    opacity: 0; 
+    transform: translateY(-10px); 
+    margin-top: 3px; 
+    visibility: hidden;
+}
+
+.dropdownLayerBtn:hover + .dropdownLayer,
+.dropdownLayer:hover {
+    max-height: 500px;
+    padding-right: 15px;
+    opacity: 1;
+}
+
+.dropdownLayerBtn:hover + .dropdownLayer li,
+.dropdownLayer:hover li {
+    opacity: 1; 
+    transform: translateY(0); 
+    visibility: visible; 
+}
+
+.dropdownLayer {
+
 }
