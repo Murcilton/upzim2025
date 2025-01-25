@@ -19,6 +19,8 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [ListController::class, 'index'])->name('home');
+Route::get('/statuses', [ListController::class, 'statuses'])->name('statuses');
+
 
 Auth::routes();
 

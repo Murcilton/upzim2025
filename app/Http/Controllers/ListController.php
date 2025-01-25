@@ -11,9 +11,34 @@ class ListController extends Controller
     {
         $this->middleware('auth');
     }
-    public function index() {
 
-        $tasks = Task::all();
+    public function index(Request $request) {
+        $status = $request->input('status');
+        $date = $request->input('date');
+        $sort = $request->input('sort');
+    
+        $tasksQuery = Task::query();
+        
+        if ($status) {
+            $tasksQuery->where('status', $status);
+        }
+    
+        if ($date) {
+            $tasksQuery->whereDate('deadline', $date);
+        }
+    
+        if ($sort) {
+            $tasksQuery->orderBy('name', $sort);
+        }
+    
+        $tasks = $tasksQuery->get();
+    
+        return view('home', compact('tasks'));
+    }
+
+    public function statuses() {
+
+        $tasks = Task::where('status', 'активно')->get();
         
         return view('home', compact('tasks'));
     }

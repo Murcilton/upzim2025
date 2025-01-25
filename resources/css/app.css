@@ -12,11 +12,14 @@ body {
     overflow-x: hidden;
     overflow-y: scroll !important;
     padding-right: 0px !important;
+    padding-bottom: 200px;
+    
 }
 
-/* .main-container {
-
-} */
+body a {
+    text-decoration: none;
+    color: inherit; 
+}
 
 .list-container {
     width: 100%;
@@ -77,6 +80,41 @@ body {
     border-radius: 100px;
     border: 1px solid rgba(0, 0, 0, 0.144);
     background-color: rgb(255, 255, 255);
+}
+
+.date-input {
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease;
+    transform: translateX(-10px);
+    position: absolute;
+    margin-left: 15px;
+    left: 35px;
+    top: -2px;
+    border: none;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.103);
+    height: 30px;
+}
+
+.dateLabel {
+    cursor: pointer;
+    padding-right: 100px;
+}
+
+#date-checkbox {
+    margin-left: -5px;
+
+}
+
+[type="checkbox"]{
+    width: 0;
+    height: 0;
+  }
+
+input[type="checkbox"]:checked ~ .date-input {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0px);
 }
 
 .logo {
@@ -314,6 +352,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     transform: translateY(-10px); 
     margin-top: 3px; 
     margin-right: 10px;
+    padding: 1px;
     visibility: hidden;
 }
 
@@ -322,6 +361,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 .dropdown-items-layer {
     width: 100%;
+    padding-bottom: 10px;
 }
 
 .dropdown:hover {
@@ -360,7 +400,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     list-style: none;
     transition: 0.5s ease;
     opacity: 0; 
-    transform: translateY(-10px); 
+    transform: translateY(10px); 
     margin-top: 3px; 
     visibility: hidden;
 }
@@ -379,6 +419,38 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     visibility: visible; 
 }
 
-.dropdownLayer {
+.dropdownLayerUnder {
+    position: relative;
+    right: 30px;
+}
 
+.btnActive {
+    color: rgb(0, 255, 0);
+}
+
+.btnCompleted {
+    color: rgb(255, 0, 0);
+}
+
+.btnQueue {
+    color: rgb(186, 186, 186);
+}
+
+.selectBtn a:active i {
+    margin-left: 3px;
+}
+
+.statuses i {
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateX(-5px);
+    position: absolute;
+    font-size: 11px;
+    left: -15px;
+    margin-top: 6px;
+}
+
+.statuses li:hover i {
+    opacity: 1;
+    transform: translateX(0px);
 }
