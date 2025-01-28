@@ -38,3 +38,63 @@ app.component('example-component', ExampleComponent);
 
 app.mount('#app');
 
+
+// ============================= DROPDOWN LAYERS SCRIPT ======================================
+document.addEventListener('DOMContentLoaded', function () {
+    const dropdownLayers = document.querySelectorAll('.dropdownLayer');
+
+    function openLayer(layer) {
+        layer.style.maxHeight = '500px';
+        layer.style.opacity = '1';
+    }
+
+    function closeLayer(layer) {
+        layer.style.maxHeight = '0';
+        layer.style.opacity = '0';
+    }
+
+    // Наведения на dropdownLayer и кнопки
+    dropdownLayers.forEach((layer, index) => {
+        const button = layer.previousElementSibling; // Кнопка, открывающая dropdownLayer (например dropdownLayerBtn)
+
+        const handleMouseEnter = () => {
+            for (let i = 0; i <= index; i++) {
+                openLayer(dropdownLayers[i]);
+            }
+        };
+
+        const handleMouseLeave = () => {
+            closeLayer(layer);
+            for (let i = index + 1; i < dropdownLayers.length; i++) {
+                closeLayer(dropdownLayers[i]);
+            }
+        };
+
+        button.addEventListener('mouseenter', handleMouseEnter);
+        button.addEventListener('mouseleave', handleMouseLeave);
+        layer.addEventListener('mouseenter', () => openLayer(layer));
+        layer.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    // Покидание всего dropdown
+    const dropdownContainer = document.querySelector('.dropdown');
+    dropdownContainer.addEventListener('mouseleave', () => {
+        dropdownLayers.forEach(closeLayer);
+    });
+});
+// ============================= /DROPDOWN LAYERS SCRIPT ======================================
+
+// ============================= PRELOADER ======================================
+window.onload = function() {
+    setTimeout(function() {
+        document.querySelector('.preloader').style.opacity = '0';
+        setTimeout(function() {
+            document.querySelector('.preloader').style.display = 'none';
+            document.querySelector('.content').style.display = 'block'; 
+            setTimeout(function() {
+                document.querySelector('.content').style.opacity = '1'; 
+            }, 10); 
+        }, 400); // Задержка перехода
+    }, 400); // Задержка в мс
+};
+// ============================= /PRELOADER ======================================

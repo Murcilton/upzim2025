@@ -319,6 +319,8 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     scroll-behavior: smooth;
 }
 
+/* ======================= DROPDOWN =========================== */
+
 .dropdown-title {
     pointer-events: all;
     cursor: default;
@@ -328,6 +330,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 
 .dropdown {
+    position: relative;
     pointer-events: none;
     transition: all 0.5s ease, box-shadow 1s ease;
     padding-top: 5px;
@@ -383,6 +386,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 
 .dropdownLayer {
     margin-top: -6px; 
+    display: flex;
     
     transition: 0.5s ease;
     max-height: 0px;
@@ -419,9 +423,65 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     visibility: visible; 
 }
 
-.dropdownLayerUnder {
-    position: relative;
-    right: 30px;
+/* ======================= /DROPDOWN =========================== */
+
+/* ======================= PRELOADER =========================== */
+.preloader {
+    position: fixed;
+    transition: 0.5s ease;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.94);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; 
+}
+
+.loader {
+    background-color: rgb(0, 0, 0);
+    border-radius: 20%;
+    width: 70px;
+    height: 70px; 
+    animation: spin 1.5s ease-in-out infinite; 
+}
+
+@keyframes spin {
+    0% { 
+        border-radius: 20%;
+        width: 60px;
+        height: 60px; 
+    }
+    33% {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px; 
+        background-color: rgb(255, 255, 255);
+    }
+    66% {
+        border-radius: 0%;
+        width: 80px;
+        height: 20px; 
+        background-color: rgb(255, 255, 255);
+    }
+    100% { 
+        width: 60px;
+        height: 60px; 
+    }
+}
+/* ======================= /PRELOADER =========================== */
+
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease, opacity 0.3s ease-out;
+    transform: translateY(-30px);
+    opacity: 0;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .btnActive {

@@ -12,13 +12,13 @@
             </a>
 
             <div class="controls">
-                <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу</button>
+                <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></button>
 
                 {{-- ========================================= Dropdown ========================================= --}}
                 <div class="dropdown-button">
                     <ul class="dropdown">
                         <div class="dropdown-title">
-                            <span>Сортировать по</span>
+                            <span>Сортировать по <i class="fa-solid fa-arrow-up-wide-short" style="color: #000000; margin-left: 4px"></i></span>
                         </div>
                         <div class="dropdown-items">
                             {{-- Основной выпадающий список --}}
@@ -36,7 +36,7 @@
                                     }
                                 </script>
                             </li>
-
+                                {{-- Внутренний выпадающий список --}}
                             <li>
                                 <span class="dropdownLayerBtn">Алфавиту</span>
                                 <ul class="dropdownLayer">
@@ -50,12 +50,10 @@
                                     </div>
                                 </ul>
                             </li>
+                            {{-- /Внутренний выпадающий список --}}
 
-
-                            {{-- /Основной выпадающий список --}}
-
+                            {{-- Внутренний выпадающий список 2 --}}
                             <li>
-                                {{-- Внутренний выпадающий список --}}
                                 <span class="dropdownLayerBtn">Статусу</span>
                                 <ul class="dropdownLayer">
                                     <div class="dropdown-items-layer statuses">
@@ -79,16 +77,12 @@
                                                 <i class="fa-solid fa-chevron-right" style="color: #000000;"></i> Ожидание
                                             </a>
                                         </li>
-
-                                        {{-- /Внутренний выпадающий список --}}
-
-                                        {{-- Продолжение основного списка --}}
-
-                                        {{-- /Продолжение основного списка --}}
                                     </div>
                                 </ul>
                             </li>
+                                {{-- /Внутренний выпадающий список 2 --}}        
 
+                            {{-- /Основной выпадающий список --}}
                         </div>
                     </ul>
                 </div>
