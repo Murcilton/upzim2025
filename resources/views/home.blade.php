@@ -12,7 +12,34 @@
             </a>
 
             <div class="controls">
-                <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></button>
+                <div class="dropdown-button createTaskBtn">
+                    <ul class="dropdown">
+                        <div class="dropdown-title">
+                            <span>Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></i></span>
+                        </div>
+                        <div class="dropdown-items">
+                            <form action="{{ route('create') }}" method="POST">
+                                @csrf
+                            <li>
+                                <input type="text" class="form-control inputEdit" name="name" placeholder="Название" autocomplete="off">
+                                <textarea type="text" class="form-control inputEdit descriptionEdit" name="description" placeholder="Описание"></textarea>
+                                <select class="form-select inputEdit" name="status" aria-label="Default select example">
+                                    <option value="Активно">Активно</option>
+                                    <option value="Завершено">Завершено</option>
+                                    <option value="Ожидание">Ожидание</option>
+                                </select>
+                                <input type="date" class="form-control inputEdit no-calendar" name="deadline" placeholder="Дедлайн">
+                            </li>
+                            <li>
+                                <button type="submit" class="btnnav">Сохранить <i class="fa-solid fa-circle-check"
+                                    style="color: #2b2b2b; margin-left: 5px"></i></button>
+                            </li>
+                            </form>
+                        </div>
+                    </ul>
+                </div>
+
+                {{-- <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></button> --}}
 
                 {{-- ========================================= Dropdown ========================================= --}}
                 <div class="dropdown-button">
@@ -25,7 +52,7 @@
 
                             <li>
                                 <input type="checkbox" id="date-checkbox" />
-                                <label for="date-checkbox" class="dateLabel"> Дате</label>
+                                <label for="date-checkbox" class="dateLabel"><i class="fa-solid fa-calendar-days" style="color: #000000;"></i> Дате </label>
                                 <input type="date" id="date-input" class="date-input form-control"
                                     onchange="updateDate(this.value)" />
                                 <script>
@@ -38,14 +65,14 @@
                             </li>
                                 {{-- Внутренний выпадающий список --}}
                             <li>
-                                <span class="dropdownLayerBtn">Алфавиту</span>
+                                <span class="dropdownLayerBtn"><i class="fa-solid fa-sort"></i> Алфавиту </span>
                                 <ul class="dropdownLayer">
                                     <div class="dropdown-items-layer statuses">
                                         <li class="selectBtn">
-                                            <a href="{{ route('home', ['sort' => 'asc']) }}"> <i class="fa-solid fa-chevron-right" style="color: #000000;"></i> По возрастанию</a>
+                                            <a href="{{ route('home', ['sort' => 'asc']) }}"> <i class="fa-solid fa-chevron-right" style="color: #000000;"></i><i class="fa-solid fa-arrow-up-a-z" style="color: #000000;"></i> По возрастанию</a>
                                         </li>
                                         <li class="selectBtn">
-                                            <a href="{{ route('home', ['sort' => 'desc']) }}"> <i class="fa-solid fa-chevron-right" style="color: #000000;"></i> По убыванию</a>
+                                            <a href="{{ route('home', ['sort' => 'desc']) }}"> <i class="fa-solid fa-chevron-right" style="color: #000000;"></i><i class="fa-solid fa-arrow-down-z-a" style="color: #000000;"></i> По убыванию</a>
                                         </li>
                                     </div>
                                 </ul>
@@ -54,7 +81,7 @@
 
                             {{-- Внутренний выпадающий список 2 --}}
                             <li>
-                                <span class="dropdownLayerBtn">Статусу</span>
+                                <span class="dropdownLayerBtn"><i class="fa-solid fa-circle-info" style="color: #000000;"></i> Статусу</span>
                                 <ul class="dropdownLayer">
                                     <div class="dropdown-items-layer statuses">
                                         <li class="selectBtn">

@@ -41,6 +41,7 @@ app.mount('#app');
 
 // ============================= DROPDOWN LAYERS SCRIPT ======================================
 document.addEventListener('DOMContentLoaded', function () {
+    const dropdownContainer = document.querySelector('.dropdown');
     const dropdownLayers = document.querySelectorAll('.dropdownLayer');
 
     function openLayer(layer) {
@@ -55,31 +56,36 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Наведения на dropdownLayer и кнопки
     dropdownLayers.forEach((layer, index) => {
-        const button = layer.previousElementSibling; // Кнопка, открывающая dropdownLayer (например dropdownLayerBtn)
-
+        const button = layer.previousElementSibling; // Кнопка, открывающая dropdownLayer (например dropdownLayerB)
         const handleMouseEnter = () => {
             for (let i = 0; i <= index; i++) {
                 openLayer(dropdownLayers[i]);
             }
         };
-
         const handleMouseLeave = () => {
             closeLayer(layer);
             for (let i = index + 1; i < dropdownLayers.length; i++) {
                 closeLayer(dropdownLayers[i]);
             }
         };
-
         button.addEventListener('mouseenter', handleMouseEnter);
         button.addEventListener('mouseleave', handleMouseLeave);
         layer.addEventListener('mouseenter', () => openLayer(layer));
         layer.addEventListener('mouseleave', handleMouseLeave);
     });
 
-    // Покидание всего dropdown
-    const dropdownContainer = document.querySelector('.dropdown');
+    // Обработчик покидания всего dropdown
     dropdownContainer.addEventListener('mouseleave', () => {
         dropdownLayers.forEach(closeLayer);
+    });
+    dropdownLayers.forEach(layer => {
+        layer.addEventListener('mouseenter', () => {
+            dropdownContainer.classList.add('hovering');
+        });
+        layer.addEventListener('mouseleave', () => {
+            dropdownContainer.classList.remove('hovering');
+            dropdownLayers.forEach(closeLayer);
+        });
     });
 });
 // ============================= /DROPDOWN LAYERS SCRIPT ======================================

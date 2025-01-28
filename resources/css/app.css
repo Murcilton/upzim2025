@@ -89,7 +89,7 @@ body a {
     transform: translateX(-10px);
     position: absolute;
     margin-left: 15px;
-    left: 35px;
+    left: 50px;
     top: -2px;
     border: none;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.103);
@@ -320,6 +320,9 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 
 /* ======================= DROPDOWN =========================== */
+.dropdown-button {
+    position: relative;
+}
 
 .dropdown-title {
     pointer-events: all;
@@ -336,11 +339,14 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     padding-top: 5px;
     border-radius: 18px;
     max-height: 36px;
+    padding-right: 0px;
+    max-width: 220px; /* Можно изменить в зависимости от желаемой ширины кнопки списка (dropdown-title) */
     position: absolute;
     background-color: white;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    
 }
 
 .dropdown ul {
@@ -369,9 +375,13 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 
 .dropdown:hover {
     pointer-events: all;
-    max-height: 500px;
+    max-height: 600px;
     padding-bottom: 10px;
     box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 0.24);
+}
+
+.dropdown:has(.dropdownLayer:hover, .dropdownLayerBtn:hover) {
+    max-width: 600px;
 }
 
 .dropdown:hover li {
@@ -387,10 +397,9 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 .dropdownLayer {
     margin-top: -6px; 
     display: flex;
-    
     transition: 0.5s ease;
     max-height: 0px;
-    width: 100%;
+    width: auto;
     opacity: 0;
 }
 
@@ -423,7 +432,73 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     visibility: visible; 
 }
 
+/* ========================= */
+
+.btnActive {
+    color: rgb(0, 255, 0);
+}
+
+.btnCompleted {
+    color: rgb(255, 0, 0);
+}
+
+.btnQueue {
+    color: rgb(186, 186, 186);
+}
+
+.selectBtn a:active i:first-child {
+    margin-left: 3px;
+}
+
+.statuses i:first-child {
+    transition: 0.5s ease;
+    opacity: 0;
+    transform: translateX(-5px);
+    position: absolute;
+    font-size: 11px;
+    left: -15px;
+    margin-top: 6px;
+}
+
+.statuses li:hover i:first-child {
+    opacity: 1;
+    transform: translateX(0px);
+}
 /* ======================= /DROPDOWN =========================== */
+
+.createTaskBtn {
+    position: relative !important;
+    
+}
+
+.createTaskBtn .dropdown-items {
+    position: relative !important;
+    right: 18px;
+
+}
+
+.createTaskBtn .dropdown {
+    position: relative !important;
+    
+}
+
+.createTaskBtn li:hover {
+    margin-left: 0px;
+}
+
+.createTaskBtn .btnnav {
+    position: relative;
+    left: 28px;
+}
+
+input.no-calendar[type="date"]::-webkit-inner-spin-button,
+input.no-calendar[type="date"]::-webkit-calendar-picker-indicator {
+    display: none; /* Скрыть кнопку выбора даты в Chrome и Safari */
+}
+
+input.no-calendar[type="date"] {
+    -moz-appearance: textfield; /* Скрыть кнопку в Firefox */
+}
 
 /* ======================= PRELOADER =========================== */
 .preloader {
@@ -433,7 +508,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.94);
+    background-color: rgb(255, 255, 255);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -473,6 +548,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 /* ======================= /PRELOADER =========================== */
 
+/* ======================= MODAL ANIMATION =========================== */
 .modal.fade .modal-dialog {
     transition: transform 0.3s ease, opacity 0.3s ease-out;
     transform: translateY(-30px);
@@ -483,34 +559,5 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     transform: translateY(0);
     opacity: 1;
 }
+/* ======================= /MODAL ANIMATION =========================== */
 
-.btnActive {
-    color: rgb(0, 255, 0);
-}
-
-.btnCompleted {
-    color: rgb(255, 0, 0);
-}
-
-.btnQueue {
-    color: rgb(186, 186, 186);
-}
-
-.selectBtn a:active i {
-    margin-left: 3px;
-}
-
-.statuses i {
-    transition: 0.5s ease;
-    opacity: 0;
-    transform: translateX(-5px);
-    position: absolute;
-    font-size: 11px;
-    left: -15px;
-    margin-top: 6px;
-}
-
-.statuses li:hover i {
-    opacity: 1;
-    transform: translateX(0px);
-}
