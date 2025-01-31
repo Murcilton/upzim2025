@@ -42,8 +42,8 @@
                 {{-- <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></button> --}}
 
                 {{-- ========================================= Dropdown ========================================= --}}
-                <div class="dropdown-button">
-                    <ul class="dropdown">
+                <div class="dropdown-button dropdown-sort-btn">
+                    <ul class="dropdown dropdown-sort">
                         <div class="dropdown-title">
                             <span>Сортировать по <i class="fa-solid fa-arrow-up-wide-short" style="color: #000000; margin-left: 4px"></i></span>
                         </div>
@@ -114,6 +114,11 @@
                     </ul>
                 </div>
                 {{-- ========================================= /Dropdown ========================================= --}}
+
+                <div class="cloud">
+                    <button type="button" class="btnnav cloudBtn">Облачное хранилище</button>
+                </div>
+
             </div>
 
         </div>

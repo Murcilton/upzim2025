@@ -54,6 +54,7 @@ body a {
     gap: 10px;
     flex-direction: row;
     white-space: nowrap;
+
 }
 
 .panel {
@@ -321,7 +322,7 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 
 /* ======================= DROPDOWN =========================== */
 .dropdown-button {
-    position: relative;
+    position: relative !important;
 }
 
 .dropdown-title {
@@ -341,11 +342,10 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     max-height: 36px;
     padding-right: 0px;
     max-width: 220px; /* Можно изменить в зависимости от желаемой ширины кнопки списка (dropdown-title) */
-    position: absolute;
     background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     
 }
 
@@ -466,9 +466,20 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 /* ======================= /DROPDOWN =========================== */
 
+
+
+.cloud {
+    position: relative !important;
+}
+
+.cloudBtn {
+    position: relative !important;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
 .createTaskBtn {
     position: relative !important;
-    
 }
 
 .createTaskBtn .dropdown-items {
