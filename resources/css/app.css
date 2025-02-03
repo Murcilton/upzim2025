@@ -341,7 +341,6 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
     max-height: 36px;
     padding-right: 0px;
     max-width: 220px; /* Можно изменить в зависимости от желаемой ширины кнопки списка (dropdown-title) */
-    position: absolute;
     background-color: white;
     display: flex;
     flex-direction: column;
@@ -433,6 +432,11 @@ box-shadow: 1px 1px 40px 2px rgba(0, 0, 0, 0.24);
 }
 
 /* ========================= */
+
+.btnCloud {
+    position: relative !important;
+    transition: 0.3s ease;
+}
 
 .btnActive {
     color: rgb(0, 255, 0);
@@ -561,3 +565,41 @@ input.no-calendar[type="date"] {
 }
 /* ======================= /MODAL ANIMATION =========================== */
 
+.files-title {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    border-radius: 0px 0px 18px 18px;
+    padding-bottom: 20px;
+    min-width: 300px;
+    min-height: 150px;
+}
+
+.files-title i {
+    font-size: 30px;
+    transition: 0.5s ease !important;
+    animation: swing 1.5s ease-in-out infinite; 
+}
+
+@keyframes swing {
+    0% { 
+        transform: rotate(-7deg);
+    }
+    50% {
+        transform: rotate(7deg);
+    }
+    100% { 
+        transform: rotate(-7deg);
+    }
+}
+
+.files-title:hover i {
+    transition: all 1.5s;
+    -webkit-transition: all 1.5s;
+    animation: none;
+    transform: rotate(0deg);
+}

@@ -113,6 +113,10 @@
                         </div>
                     </ul>
                 </div>
+                <div class="btnCloud">
+                    <button onclick="window.location='{{route('files')}}'" class="btnnav "><span>Файловое хранилище</span> <i class="fa-solid fa-cloud-arrow-up" style="color: #000000; margin-left: 4px"></i></button>
+                </div>
+
                 {{-- ========================================= /Dropdown ========================================= --}}
             </div>
 
@@ -255,3 +259,4 @@
 
 
     </div>
+@endsection
