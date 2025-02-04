@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\File;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FileController extends Controller
 {
@@ -11,7 +14,8 @@ class FileController extends Controller
      */
     public function index()
     {
-        return view("files");
+        $files = File::where('user_id', Auth::user()->id)->get();
+        return view('files', compact('files'));
     }
 
     /**
@@ -27,7 +31,24 @@ class FileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'file' => 'required|file'
+        ]);
+        $folderName = Auth::user()->name . '-' . Auth::user()->id . '-' . 'folder';
+        if (!\Storage::exists('uploads/' . $folderName)) {
+            \Storage::makeDirectory('uploads/' . $folderName);
+        }
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $path = $request->file('file')->storeAs('uploads/' . $folderName, $fileName, 'public');
+
+        $file = new File;
+        $file->name = $fileName;
+        $file->path = $path;
+        $file->user_id = Auth::user()->id;
+        $save = $file->save();
+
+        return redirect()->back()->with('success', 'Файл успешно загружен!');
     }
 
     /**

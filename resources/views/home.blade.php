@@ -119,10 +119,6 @@
 
                 {{-- ========================================= /Dropdown ========================================= --}}
 
-                <div class="cloud">
-                    <button type="button" class="btnnav cloudBtn">Облачное хранилище</button>
-                </div>
-
             </div>
 
         </div>

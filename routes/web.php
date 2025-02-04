@@ -23,6 +23,7 @@ Route::get('/home', [ListController::class, 'index'])->name('home');
 Route::get('/statuses', [ListController::class, 'statuses'])->name('statuses');
 
 Route::get('/files', [FileController::class,'index'])->name('files');
+Route::post('/files-store', [FileController::class, 'store'])->name('store');
 
 Auth::routes();
 

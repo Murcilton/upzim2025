@@ -52,3 +52,15 @@ server: {
     php artisan migrate:generate --tables="table1,table2,table3,table4,table5"
 
 ===============================================================
+
+    Загрузка файла с точным названием
+
+        // $request->validate(['file' => 'required|file']);
+        // $folderName = Auth::user()->name. '-' . Auth::user()->id . '-' . 'folder';
+        // if (!\Storage::exists('uploads/' . $folderName)) {
+        // \Storage::makeDirectory('uploads/' . $folderName);
+        // }
+        //     $fileName = Auth::user()->name . '-' . Carbon::now('Asia/Yekaterinburg')->format('Y-m-d_(H-i-s)') . ' (' . uniqid() . ')' . '.' . $request->file('file')->getClientOriginalExtension();
+        //     $path = $request->file('file')->storeAs('uploads/' . $folderName, $fileName, 'public');
+
+===============================================================
