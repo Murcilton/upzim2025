@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,6 +22,7 @@ Route::get('/', function () {
 Route::get('/home', [ListController::class, 'index'])->name('home');
 Route::get('/statuses', [ListController::class, 'statuses'])->name('statuses');
 
+Route::get('/files', [FileController::class,'index'])->name('files');
 
 Auth::routes();
 

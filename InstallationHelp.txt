@@ -1,0 +1,54 @@
+===============================================================
+    
+    Заполнение БД (сидер): 
+
+composer require orangehill/iseed
+php artisan iseed my_table
+
+===============================================================
+
+    Перезапись текущего проекта (если остались незакоммиченные изменения)
+
+git reset HEAD --hard
+git pull origin master
+
+===============================================================
+
+    Готовая аутентификация
+
+composer require laravel/ui
+php artisan ui vue —auth
+php artisan migrate
+
+===============================================================
+
+    Ошибка с CORS для Vite
+
+server: {
+    hmr: {
+    host: 'localhost',
+    },
+    cors: {
+        origin: 'http://localhost', 
+        credentials: true,
+    },
+},
+
+===============================================================
+
+    Клонирование тяжелого проекта
+
+    git config --global http.postBuffer 524288000
+    git config --global http.maxRequestBuffer 524288000
+    git config --global core.compression 0
+
+===============================================================
+
+    Создание миграции для существующей таблицы
+
+    https://github.com/kitloong/laravel-migrations-generator
+    composer require --dev kitloong/laravel-migrations-generator
+    php artisan migrate:generate
+    php artisan migrate:generate --tables="table1,table2,table3,table4,table5"
+
+===============================================================
