@@ -10,5 +10,5 @@ class Folder extends Model
     use HasFactory;
 
     protected $table = "folders";
-    protected $fillable = ['name', 'path', 'id'];
+    protected $fillable = ['name', 'path', 'id', 'user_id'];
 }

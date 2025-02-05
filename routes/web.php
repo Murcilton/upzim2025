@@ -25,6 +25,10 @@ Route::get('/statuses', [ListController::class, 'statuses'])->name('statuses');
 Route::get('/files', [FileController::class,'index'])->name('files');
 Route::post('/files-store', [FileController::class, 'store'])->name('store');
 
+Route::post('/folders-store', [FileController::class, 'folderStore'])->name('folder.store');
+
+Route::delete('/files/{id}', [FileController::class,'destroy'])->name('destroy.file');
+
 Auth::routes();
 
 Route::post('/edit/{id}', [ListController::class, 'edit'])->name('edit');

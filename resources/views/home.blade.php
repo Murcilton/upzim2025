@@ -2,6 +2,7 @@
 
 @section('content')
 
+    {{ Auth::user()->name }}
     <div class="list-container">
         <div class="panel">
             <a href="{{ route('home') }}">
@@ -38,8 +39,6 @@
                         </div>
                     </ul>
                 </div>
-
-                {{-- <button class="btnnav btnCreate" data-bs-toggle="modal" data-bs-target="#exampleModal">Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></button> --}}
 
                 {{-- ========================================= Dropdown ========================================= --}}
                 <div class="dropdown-button dropdown-sort-btn">

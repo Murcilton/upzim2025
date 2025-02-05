@@ -329,6 +329,7 @@ input[type="checkbox"]:checked~.date-input {
 }
 
 .dropdown-title {
+    transition: 0.3s ease;
     pointer-events: all;
     cursor: default;
     position: relative;
@@ -370,6 +371,7 @@ input[type="checkbox"]:checked~.date-input {
 }
 
 .dropdown-items {
+    
     margin-top: 6px;
 }
 
@@ -516,12 +518,10 @@ input[type="checkbox"]:checked~.date-input {
 input.no-calendar[type="date"]::-webkit-inner-spin-button,
 input.no-calendar[type="date"]::-webkit-calendar-picker-indicator {
     display: none;
-    /* Скрыть кнопку выбора даты в Chrome и Safari */
 }
 
 input.no-calendar[type="date"] {
     -moz-appearance: textfield;
-    /* Скрыть кнопку в Firefox */
 }
 
 /* ======================= PRELOADER =========================== */
@@ -610,7 +610,7 @@ input.no-calendar[type="date"] {
     animation: swing 1.5s ease-in-out infinite;
 }
 
-@keyframes swing {
+/* @keyframes swing {
     0% {
         transform: rotate(-7deg);
     }
@@ -622,7 +622,7 @@ input.no-calendar[type="date"] {
     100% {
         transform: rotate(-7deg);
     }
-}
+} */
 
 .files-title:hover i {
     transition: all 1.5s;
@@ -651,9 +651,83 @@ input.no-calendar[type="date"] {
     position: relative;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 10px;
     margin-top: 40px;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
     border-radius: 18px;
     padding: 20px;
+    width: 650px;
 }
+
+.file-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.file-items {
+    margin-top: 5px;
+}
+
+.file-item button {
+    margin-left: 10px;
+    color: rgb(255, 0, 0) !important;
+}
+
+.file-item h6 {
+position: relative;
+}
+
+.folder-create {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.createFolderBtn .dropdown-items {
+    transition: 0.4s ease !important;
+}
+
+.createFolderBtn .dropdown {
+    padding-right: -10px;
+    transition: 0.4s ease;
+    margin: -5px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+    max-width: 60px !important;
+}
+
+
+.createFolderBtn .dropdown:hover { 
+    max-width: 200px !important;
+    max-height: 100px !important;
+}
+
+.createFolderBtn .dropdown:hover .dropdown-title { 
+
+margin-right: 20px;
+}
+
+.createFolderBtn .dropdown-items { 
+    transition: 0.3s ease;
+    scale: 0.4;
+}
+
+.createFolderBtn .dropdown:hover .dropdown-items { 
+    scale: 1;
+}
+
+.createFolderBtn button {
+    position: absolute;
+    background: none;
+    bottom: 90px;
+    margin-left: 60px;
+    color: rgb(0, 255, 0);
+}
+
+.createFolderBtn button:hover {
+    scale: 1.25;
+    box-shadow: none;
+}
+
