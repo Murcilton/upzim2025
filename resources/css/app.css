@@ -696,12 +696,13 @@ position: relative;
     margin: -5px;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
     max-width: 60px !important;
+    height: 100px !important;
 }
 
 
 .createFolderBtn .dropdown:hover { 
     max-width: 200px !important;
-    max-height: 100px !important;
+
 }
 
 .createFolderBtn .dropdown:hover .dropdown-title { 
@@ -731,3 +732,54 @@ margin-right: 20px;
     box-shadow: none;
 }
 
+input.file-to-folder-input[type="file"] {
+    display: none;
+  }
+
+.file-to-folder-input {
+    display: inline-block;
+}
+
+.dropdown-folder li:hover{
+    margin-left: 0px;
+}
+
+.upload-to-folder {
+    cursor: pointer;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 18px;
+}
+
+.dropdown-folder .dropdown-title {
+    width: 200px; 
+    display: flex;
+    
+    align-items: center; 
+}
+
+.dropdown-folder .dropdown-title a {
+    flex: 1; 
+    position: relative;
+    top: -4px;
+    overflow: hidden; 
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
+}
+
+.folder-add {
+    position: relative;
+    border-radius: 18px;
+    bottom: 5px;
+}
+
+.dropdown-folder {
+    width: fit-content;
+    align-items: flex-start;
+}
+
+.dropdown-folder .dropdown-title:hover {
+    width: 500px !important;
+    
+}

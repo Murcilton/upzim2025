@@ -26,6 +26,7 @@ Route::get('/files', [FileController::class,'index'])->name('files');
 Route::post('/files-store', [FileController::class, 'store'])->name('store');
 
 Route::post('/folders-store', [FileController::class, 'folderStore'])->name('folder.store');
+Route::post('/folders-add/{id}', [FileController::class, 'folderAdd'])->name('folder.add');
 
 Route::delete('/files/{id}', [FileController::class,'destroy'])->name('destroy.file');
 

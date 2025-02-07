@@ -16,8 +16,9 @@ class FileController extends Controller
      */
     public function index()
     {
+        $folders = Folder::where('user_id', Auth::user()->id)->get();
         $files = File::where('user_id', Auth::user()->id)->get();
-        return view('files', compact('files'));
+        return view('files', compact('files', 'folders'));
     }
 
     /**
@@ -83,6 +84,12 @@ class FileController extends Controller
         $folder->path = 'uploads/'. $foldersName;
         $folder->save();
         return redirect()->back()->with('success', 'Папка успешно создана!');
+    }
+
+    public function folderAdd(string $id)
+    {
+        $folder = Folder::find($id);
+        
     }
 
     /**
