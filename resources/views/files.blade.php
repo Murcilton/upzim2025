@@ -24,28 +24,34 @@
         <div class="folder-items">
             @foreach ($folders as $folder)
                 <div class="folder-item">
-                    
 
                     <div class="dropdown-button dropdown-folder-btn">
-
                         <ul class="dropdown dropdown-folder">
                             <div class="dropdown-title">
 
                                 <div class="folder-add">
-                                    <form action="{{ route('folder.add', $folder->id) }}" enctype="multipart/form-data" method="post">
+                                    <form action="{{ route('folder.add') }}" enctype="multipart/form-data" method="post">
                                         @csrf
-                                        <label class="upload-to-folder" for="file-to-folder-input"><i class="fa-regular fa-file" style="color: #000000;"></i>+</label>
-                                        <input type="file" id="file-to-folder-input" class="form-control file-to-folder-input" placeholder='Добавить файл в папку'>
+                                        <label class="upload-to-folder" for="file-to-folder-input">
+                                            <i class="fa-regular fa-file"></i>+
+                                        </label>
+                                        <input type="hidden" name="folderId" value="{{$folder->id}}">
+                                        <input type="file" name="file" id="file-to-folder-input" class="form-control file-to-folder-input" placeholder='Добавить файл в папку'>
+                                        <button type="submit" class="btnnav">
+                                            <i class="fa-solid fa-check" style="position: relative; bottom: 2px;"></i>
+                                        </button>
                                     </form>
                                 </div>
-                                
+                            
                                 <a href="#"><i class="fa-solid fa-folder-open"></i> {{ $folder->name }}</a>
                             </div>
                             <div class="dropdown-items">
                                 {{-- Основной выпадающий список --}}
-    
+                                {{-- @foreach ($insetFiles as $insetFile)
+                                
+                                @endforeach --}}
                                 <li>
-
+                                    
                                 </li>
                                     {{-- /Внутренний выпадающий список 2 --}}        
     

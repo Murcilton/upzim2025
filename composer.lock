@@ -6009,16 +6009,16 @@
         },
         {
             "name": "kitloong/laravel-migrations-generator",
-            "version": "v7.0.6",
+            "version": "v7.0.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kitloong/laravel-migrations-generator.git",
-                "reference": "3d036e3030928f904c833a8e004fd4914f301236"
+                "reference": "c0ec3ec0beb18f5a1f516b6cf214879133bcd37e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kitloong/laravel-migrations-generator/zipball/3d036e3030928f904c833a8e004fd4914f301236",
-                "reference": "3d036e3030928f904c833a8e004fd4914f301236",
+                "url": "https://api.github.com/repos/kitloong/laravel-migrations-generator/zipball/c0ec3ec0beb18f5a1f516b6cf214879133bcd37e",
+                "reference": "c0ec3ec0beb18f5a1f516b6cf214879133bcd37e",
                 "shasum": ""
             },
             "require": {
@@ -6070,7 +6070,7 @@
             ],
             "support": {
                 "issues": "https://github.com/kitloong/laravel-migrations-generator/issues",
-                "source": "https://github.com/kitloong/laravel-migrations-generator/tree/v7.0.6"
+                "source": "https://github.com/kitloong/laravel-migrations-generator/tree/v7.0.7"
             },
             "funding": [
                 {
@@ -6082,7 +6082,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-11-03T12:05:10+00:00"
+            "time": "2025-02-09T13:04:06+00:00"
         },
         {
             "name": "laravel/pint",
@@ -6961,16 +6961,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.44",
+            "version": "10.5.45",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "1381c62769be4bb88fa4c5aec1366c7c66ca4f36"
+                "reference": "bd68a781d8e30348bc297449f5234b3458267ae8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/1381c62769be4bb88fa4c5aec1366c7c66ca4f36",
-                "reference": "1381c62769be4bb88fa4c5aec1366c7c66ca4f36",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/bd68a781d8e30348bc297449f5234b3458267ae8",
+                "reference": "bd68a781d8e30348bc297449f5234b3458267ae8",
                 "shasum": ""
             },
             "require": {
@@ -7042,7 +7042,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.44"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.45"
             },
             "funding": [
                 {
@@ -7058,7 +7058,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-01-31T07:00:38+00:00"
+            "time": "2025-02-06T16:08:12+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -8481,12 +8481,12 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.1"
     },
-    "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "platform-dev": {},
+    "plugin-api-version": "2.6.0"
 }

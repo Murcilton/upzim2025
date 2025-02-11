@@ -81,15 +81,27 @@ class FileController extends Controller
         $folder = new Folder;
         $folder->name = $foldersName;
         $folder->user_id = Auth::user()->id;
-        $folder->path = 'uploads/'. $foldersName;
+        $folder->path = 'uploads/'. $folderName . '/' . $foldersName;
         $folder->save();
         return redirect()->back()->with('success', 'Папка успешно создана!');
     }
 
-    public function folderAdd(string $id)
+    public function folderAdd(Request $request)
     {
-        $folder = Folder::find($id);
-        
+        $folderId = $request->folderId;
+        $folder = Folder::find($folderId);
+        $file = $request->file('file');
+        $fileName = $file->getClientOriginalName();
+        $folderName = Auth::user()->storage_name;
+        $path = $file->storeAs($folderName . '/' . $folder->path, $fileName, 'public');
+
+        $fileModel = new File;
+        $fileModel->name = $fileName;
+        $fileModel->path = $path;
+        $fileModel->user_id = Auth::user()->id;
+        $fileModel->folder_id = $folderId;
+        $fileModel->save();
+        return redirect()->back()->with('success', 'Файл успешно добавлен в папку!');
     }
 
     /**
