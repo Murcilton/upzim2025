@@ -16,6 +16,8 @@ class FileController extends Controller
      */
     public function index()
     {
+
+
         $folders = Folder::where('user_id', Auth::user()->id)->get();
         $files = File::where('user_id', Auth::user()->id)->get();
         return view('files', compact('files', 'folders'));
@@ -90,19 +92,33 @@ class FileController extends Controller
     {
         $folderId = $request->folderId;
         $folder = Folder::find($folderId);
-        $file = $request->file('file');
-        $fileName = $file->getClientOriginalName();
-        $folderName = Auth::user()->storage_name;
-        $path = $file->storeAs($folderName . '/' . $folder->path, $fileName, 'public');
-
-        $fileModel = new File;
-        $fileModel->name = $fileName;
-        $fileModel->path = $path;
-        $fileModel->user_id = Auth::user()->id;
-        $fileModel->folder_id = $folderId;
-        $fileModel->save();
-        return redirect()->back()->with('success', 'Файл успешно добавлен в папку!');
+    
+        // Проверка наличия файла
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+    
+            // Проверка, что файл корректен
+            if ($file->isValid()) {
+                $fileName = $file->getClientOriginalName();
+                $path = $file->storeAs($folder->path, $fileName, 'public');
+    
+                $fileModel = new File;
+                $fileModel->name = $fileName;
+                $fileModel->path = $path;
+                $fileModel->user_id = Auth::user()->id;
+                $fileModel->folder_id = $folderId;
+                $fileModel->save();
+    
+                return redirect()->back()->with('success', 'Файл успешно добавлен в папку!');
+            } else {
+                return redirect()->back()->with('error', 'Ошибка при загрузке файла. Пожалуйста, попробуйте еще раз.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Файл не был загружен. Пожалуйста, попробуйте еще раз.');
+        }
     }
+    
+    
 
     /**
      * Display the specified resource.

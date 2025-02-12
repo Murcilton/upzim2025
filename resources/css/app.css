@@ -660,6 +660,7 @@ input.no-calendar[type="date"] {
     border-radius: 18px;
     padding: 20px;
     width: 650px;
+    z-index: 100;
 }
 
 .file-item {
@@ -742,6 +743,20 @@ input.file-to-folder-input[type="file"] {
     display: inline-block;
 }
 
+.dropdown-folder {
+    display: flex;
+    align-items: flex-start !important;
+    padding-right: 10px;
+    width: 100%;
+}
+
+.dropdown-folder .dropdown-items {
+    z-index: 9999;
+    margin-left: 120px;
+    padding-bottom: 30px;
+
+}
+
 .dropdown-folder li:hover{
     margin-left: 0px;
 }
@@ -758,7 +773,10 @@ input.file-to-folder-input[type="file"] {
     transition: 0.3s ease;
     display: flex;
     align-items: center;
+    flex-direction: row-reverse;
+    justify-content: flex-start;
     max-width: 160px; 
+    
 }
 
 .dropdown-folder .dropdown-title a {
@@ -780,31 +798,56 @@ input.file-to-folder-input[type="file"] {
     max-width: 400px !important;
 }
 
+.ifolder .fa-folder-open {
+    opacity: 0;
+    position: absolute;
+    top: 3px;
+    left: 0px;
+    transition: 0.3s ease;
+}
+
+.ifolder .fa-folder {
+    transition: 0.3s ease;
+}
+
+.dropdown-folder:hover .ifolder .fa-folder-open {
+    opacity: 1;
+}
+
+.dropdown-folder:hover .ifolder .fa-folder {
+    opacity: 0;
+}
+
 .folder-add button:hover {
     box-shadow: none;
-
 }
 
 .folder-add button {
     color:rgb(0, 255, 0);
     position: absolute;
     background: none;
-    left: 0px;
-    top: 22px;
+    left: 23px;
+    top: 2px;
     transition: 0.3s ease;
     opacity: 0;
     z-index: 100;
-    transform: translateY(-20px);
-}
-
-.dropdown-folder:hover .folder-add button {
-    opacity: 1;
-    transform: translateX(0px);
+    transform: translateX(-20px);
 }
 
 .upload-to-folder i {
     color: #000; 
-    transition: color 0.3s ease; 
+    transition: 0.3s ease; 
+    opacity: 0;
+}
+
+.dropdown-folder:hover .folder-add .upload-to-folder i{
+    opacity: 1;
+    transform: translateX(0px);
+}
+
+.dropdown-folder:hover .folder-add button{
+    opacity: 1;
+    transform: translateX(0px);
 }
 
 .file-to-folder-input:valid + .upload-to-folder i {
@@ -818,6 +861,25 @@ input.file-to-folder-input[type="file"] {
 }
 
 .folder-items {
+    transition: 0.5s ease;
     margin-bottom: 50px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 18px;
+    box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
+}
+
+.folder-item {
+    height: 50px;
+    transition: 0.5s ease;
+}
+
+.folder-items:hover .folder-item:not(:hover) {
+    opacity: 0.2;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.folder-items:hover .folder-item:has(:hover) {
     z-index: 9999;
 }
