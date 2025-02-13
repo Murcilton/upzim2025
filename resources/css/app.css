@@ -634,7 +634,7 @@ input.no-calendar[type="date"] {
 
 .files-container {
     display: flex;
-    margin-top: 50px;
+    margin-top: 15px;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -660,12 +660,12 @@ input.no-calendar[type="date"] {
     border-radius: 18px;
     padding: 20px;
     width: 650px;
-    z-index: 100;
+    z-index: 1;
 }
 
 .file-item {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row;
 }
@@ -687,6 +687,7 @@ position: relative;
     position: absolute;
     top: 0px;
     left: 0px;
+    z-index: 9999;
 }
 
 .createFolderBtn .dropdown-items {
@@ -709,7 +710,6 @@ position: relative;
 }
 
 .createFolderBtn .dropdown:hover .dropdown-title { 
-
 margin-right: 20px;
 }
 
@@ -748,17 +748,17 @@ input.file-to-folder-input[type="file"] {
     align-items: flex-start !important;
     padding-right: 10px;
     width: 100%;
+
 }
 
 .dropdown-folder .dropdown-items {
-    z-index: 9999;
     margin-left: 120px;
     padding-bottom: 30px;
 
 }
 
 .dropdown-folder li:hover{
-    margin-left: 0px;
+    margin-left: 1px;
 }
 
 .upload-to-folder {
@@ -857,7 +857,10 @@ input.file-to-folder-input[type="file"] {
 .folder-container {
     position: relative;
     margin-top: 50px;
+}
 
+.folder-container h2 {
+    margin-left: 45px;
 }
 
 .folder-items {
@@ -882,4 +885,18 @@ input.file-to-folder-input[type="file"] {
 
 .folder-items:hover .folder-item:has(:hover) {
     z-index: 9999;
+}
+
+.divider-folder {
+    position: absolute;
+    left: 110px;
+    bottom: 0px;
+    height: calc(100% - 45px);
+    width: 1px;
+    background-color: rgba(0, 0, 0, 0.123);
+    border-radius: 18px;
+}
+
+.folder {
+    z-index: 99999999;
 }
