@@ -668,6 +668,7 @@ input.no-calendar[type="date"] {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    width: 100%;
 }
 
 .file-items {
@@ -692,9 +693,11 @@ position: relative;
 
 .createFolderBtn .dropdown-items {
     transition: 0.4s ease !important;
+
 }
 
 .createFolderBtn .dropdown {
+    z-index: 99999;
     padding-right: -10px;
     transition: 0.4s ease;
     margin: -5px;
@@ -745,10 +748,15 @@ input.file-to-folder-input[type="file"] {
 
 .dropdown-folder {
     display: flex;
+    background: none;
     align-items: flex-start !important;
     padding-right: 10px;
     width: 100%;
+    z-index: 999;
+}
 
+.dropdown-folder:hover {
+    background: white;
 }
 
 .dropdown-folder .dropdown-items {
@@ -759,6 +767,7 @@ input.file-to-folder-input[type="file"] {
 
 .dropdown-folder li:hover{
     margin-left: 1px;
+
 }
 
 .upload-to-folder {
@@ -775,8 +784,8 @@ input.file-to-folder-input[type="file"] {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    max-width: 160px; 
-    
+    max-width: 140px; 
+    min-width: 130px;
 }
 
 .dropdown-folder .dropdown-title a {
@@ -792,6 +801,7 @@ input.file-to-folder-input[type="file"] {
     position: relative;
     border-radius: 18px;
     bottom: 5px;
+    z-index: 9999;
 }
 
 .dropdown-folder:hover .dropdown-title {
@@ -875,10 +885,10 @@ input.file-to-folder-input[type="file"] {
 .folder-item {
     height: 50px;
     transition: 0.5s ease;
+
 }
 
 .folder-items:hover .folder-item:not(:hover) {
-    opacity: 0.2;
     z-index: -1;
     pointer-events: none;
 }
@@ -895,8 +905,4 @@ input.file-to-folder-input[type="file"] {
     width: 1px;
     background-color: rgba(0, 0, 0, 0.123);
     border-radius: 18px;
-}
-
-.folder {
-    z-index: 99999999;
 }

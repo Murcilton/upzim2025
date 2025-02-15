@@ -64,9 +64,9 @@
                         <div class="divider-folder"></div>
                         
                             @foreach ($files as $file)
-                            <li>
+
                                 @if ($file->folder_id == $folder->id)
-                                
+                                <li>
                                     <div class="file-item">
                                         <a href="{{ asset('storage/' . $file->path) }}"><i class="fa-solid fa-file-alt"></i>
                                             {{ $file->name }}</a>
@@ -78,8 +78,9 @@
                                             </form>
                                         </div>
                                     </div>
+                                </li>
                                 @endif
-                            </li>
+
                             @endforeach
                         
                     </div>
@@ -96,15 +97,7 @@
 
             <div class="files-cycle">
 
-                <div class="files-container">
-                    <div class="files-input">
-                        <form class="files-input-form" action="{{route('store')}}" enctype="multipart/form-data" method="post">
-                            @csrf
-                            <input type="file" class="form-control" name="file" id="file" placeholder="Выберите файл">
-                            <button type="submit" class="btnnav">Сохранить</button>
-                        </form>
-                    </div>
-                </div>
+
 
                 <div class="file-items">
                     @if (!empty($files) && $files->isNotEmpty())
