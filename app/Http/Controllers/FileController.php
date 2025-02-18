@@ -158,4 +158,20 @@ class FileController extends Controller
             return redirect()->back()->with('success', 'Файл успешно удален!');
         }
     }
+
+    public function destroyFolder(string $id)
+    {
+        $files = File::where('folder_id', $id)->get();;
+        $folder = Folder::find($id);
+        if ($folder->user_id == Auth::user()->id) {
+            if (\Storage::disk('public')->exists($folder->path)) {
+                \Storage::disk('public')->deleteDirectory($folder->path);
+                foreach ($files as $file) {
+                $file->delete();
+                }
+            }
+            $folder->delete();
+            return redirect()->back()->with('success', 'Папка успешно удалена!');
+        }
+    }
 }

@@ -29,6 +29,7 @@ Route::post('/folders-store', [FileController::class, 'folderStore'])->name('fol
 Route::post('/folders-add', [FileController::class, 'folderAdd'])->name('folder.add');
 
 Route::delete('/files/{id}', [FileController::class,'destroy'])->name('destroy.file');
+Route::delete('/folders/{id}', [FileController::class,'destroyFolder'])->name('destroy.folder');
 
 Auth::routes();
 
