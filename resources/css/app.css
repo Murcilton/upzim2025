@@ -786,14 +786,16 @@ input.file-to-folder-input[type="file"] {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    max-width: 100px; 
+    max-width: 160px; 
     min-width: 150px;
+
 }
 
 .dropdown-folder .dropdown-title a {
     flex: 1; 
     position: relative;
     top: -4px;
+
     overflow: hidden; 
     white-space: nowrap; 
     text-overflow: ellipsis; 
@@ -806,6 +808,33 @@ input.file-to-folder-input[type="file"] {
     right: 30px;
     pointer-events: none;
     z-index: 999;
+}
+
+/* .divide-actions {
+    width: 10px;
+    position: relative;
+    margin-left: 60px;
+} */
+
+
+
+.folder-actions {
+    position: absolute;
+    right: 64px;
+    top: 6px;
+    transition: 0.3s ease;
+    z-index: 99;
+    opacity: 0;
+}
+
+.folder-actions button {
+    background: none;
+    border: none;
+}
+
+.dropdown-folder:hover .folder-actions {
+    opacity: 1;
+    transform: translateX(0px);
 }
 
 .dropdown-folder:hover .dropdown-title {
@@ -919,25 +948,6 @@ input.file-to-folder-input[type="file"] {
     border-radius: 18px;
 }
 
-.folder-actions {
-    position: absolute;
-    right: 64px;
-    top: 6px;
-    transition: 0.3s ease;
-    z-index: 99;
-    opacity: 0;
-}
-
-.folder-actions button {
-    background: none;
-    border: none;
-}
-
-.dropdown-folder:hover .folder-actions {
-    opacity: 1;
-    transform: translateX(0px);
-}
-
 .folder-move-list {
     position: relative;
     display: flex;
@@ -945,9 +955,24 @@ input.file-to-folder-input[type="file"] {
     flex-direction: column;
     /* box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
     border-radius: 18px; */
-    max-height: 210px;
+    max-height: 256px;
     overflow-y: auto;
     scrollbar-width: thin;
     padding: 13px;
 
+}
+
+.moveModal .modal-title{
+ scrollbar-width: thin;
+ overflow-x: auto;
+}
+
+.moveModal .modal-title span:nth-child(4){
+    font-weight: 400 !important;
+    font-size: 17px;
+}
+
+.moveModal .modal-title .fa-turn-down{
+    position: relative;
+    top: 5px;
 }

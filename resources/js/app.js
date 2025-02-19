@@ -105,5 +105,8 @@ window.onload = function() {
 };
 // ============================= /PRELOADER ======================================
 
-
-
+// $('.form-check').click(
+//     function(){
+//         $(this).find(':radio').attr('checked','checked');
+//         //выделение всех чекбоксов на кликнутом контейнере, снять выделение через removeAttr("checked")
+// });

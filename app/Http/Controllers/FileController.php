@@ -117,6 +117,43 @@ class FileController extends Controller
             return redirect()->back()->with('error', 'Файл не был загружен. Пожалуйста, попробуйте еще раз.');
         }
     }
+
+    public function move(Request $request)
+    {
+        // Валидация входящих данных
+        $request->validate([
+            'folderId' => 'required|exists:folders,id',
+            'fileId' => 'required|exists:files,id',
+        ]);
+
+        // Получаем файл по ID
+        $file = File::findOrFail($request->fileId);
+        $newFolder = Folder::findOrFail($request->folderId);
+
+        // Получаем имя пользователя и формируем пути
+        $userStorageName = auth()->user()->storage_name; // Предполагаем, что пользователь аутентифицирован
+        $oldFolderPath = 'uploads/' . $userStorageName . '/' . Folder::find($file->folder_id)->name;
+        $newFolderPath = 'uploads/' . $userStorageName . '/' . $newFolder->name;
+
+        // Путь к файлу
+        $filePath = $oldFolderPath . '/' . $file->name;
+
+        // Проверяем, существует ли файл
+        if (\Storage::exists($filePath)) {
+            // Создаем новую папку, если она не существует
+            if (!\Storage::exists($newFolderPath)) {
+                \Storage::makeDirectory($newFolderPath);
+            }
+            // Перемещаем файл в новую папку
+            \Storage::move($filePath, $newFolderPath . '/' . $file->name);
+        }
+
+        // Обновляем ID папки файла в базе данных
+        $file->folder_id = $request->folderId;
+        $file->save();
+
+        return redirect()->back()->with('success', 'Файл успешно перемещен!');
+    }
     
     
 

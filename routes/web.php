@@ -31,6 +31,8 @@ Route::post('/folders-add', [FileController::class, 'folderAdd'])->name('folder.
 Route::delete('/files/{id}', [FileController::class,'destroy'])->name('destroy.file');
 Route::delete('/folders/{id}', [FileController::class,'destroyFolder'])->name('destroy.folder');
 
+Route::post('/files/move', [FileController::class, 'move'])->name('files.move');
+
 Auth::routes();
 
 Route::post('/edit/{id}', [ListController::class, 'edit'])->name('edit');
