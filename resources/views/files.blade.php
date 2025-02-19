@@ -197,9 +197,31 @@
 
             </div>
 
+
+
         </div>
     </div>
 
+    <div class="container">
+    <div class="menu-item" data-menu="folder-menu">Папка 1</div>
+    <div class="menu-item" data-menu="file-menu">Файл 1</div>
+    <div class="menu-item" data-menu="folder-menu">Папка 2</div>
+    <div class="menu-item" data-menu="file-menu">Файл 2</div>
+
+    <div id="folder-menu" class="context-menu" style="display:none; position:absolute;">
+        <ul>
+            <li>Переименовать папку</li>
+            <li>Удалить папку</li>
+        </ul>
+    </div>
+
+    <div id="file-menu" class="context-menu" style="display:none; position:absolute;">
+        <ul>
+            <li>Открыть файл</li>
+            <li>Удалить файл</li>
+        </ul>
+    </div>
+</div>
 
 
 @endsection

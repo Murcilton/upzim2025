@@ -110,3 +110,44 @@ window.onload = function() {
 //         $(this).find(':radio').attr('checked','checked');
 //         //выделение всех чекбоксов на кликнутом контейнере, снять выделение через removeAttr("checked")
 // });
+
+const menus = document.querySelectorAll('.context-menu');
+
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        // Скрыть все меню
+        menus.forEach(menu => menu.style.display = 'none');
+        
+        // Получаем ID меню из атрибута data-menu
+        const menuId = item.getAttribute('data-menu');
+        const menuToShow = document.getElementById(menuId);
+        
+        // Показываем нужное меню, позиционируем относительно курсора
+        if (menuToShow) {
+            menuToShow.style.cssText = `display: block; left: ${e.pageX + 10}px; top: ${e.pageY + 10}px;`;
+        }
+    });
+});
+
+// Скрыть меню при клике вне
+window.addEventListener('click', () => {
+    menus.forEach(menu => menu.style.display = 'none');
+});
+
+// Обработка кликов по пунктам меню
+menus.forEach(menu => {
+    menu.querySelectorAll('li').forEach(option => {
+        option.addEventListener('click', () => {
+            alert(`Вы выбрали: ${option.textContent}`);
+            menu.style.display = 'none';
+        });
+    });
+});
+
+
+
+
+
+
+
