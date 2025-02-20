@@ -38,7 +38,16 @@
                 <div class="folder-items">
                     <h2>Папки</h2>
                     @foreach ($folders as $folder)
-                            <div class="folder-item">
+
+                    <div class="context-menu" id="context-menu-{{ $folder->id }}">
+                        <ul>
+                            <li class="btnContext"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i> Опция X</li>
+                            <li class="btnContext"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i> Опция Y</li>
+                            <li class="btnContext"><i class="fa-solid fa-chevron-right" style="color: #000000;"></i> Опция Z</li>
+                        </ul>
+                    </div>
+
+                            <div class="folder-item menu-item" data-menu="context-menu-{{ $folder->id }}">
                                 <div class="folder">
                                     <div class="dropdown-button dropdown-folder-btn">
                                         <ul class="dropdown dropdown-folder">
@@ -176,7 +185,7 @@
                     @if (!empty($files) && $files->isNotEmpty())
                         @foreach ($files as $file)
                             @if ($file->folder_id == null)
-                                <div class="file-item">
+                                <div class="file-item" >
                                     <a href="{{ asset('storage/' . $file->path) }}"><i class="fa-solid fa-file-alt"></i>
                                         {{ $file->name }}</a>
                                     <div class="file-actions">
@@ -203,25 +212,28 @@
     </div>
 
     <div class="container">
-    <div class="menu-item" data-menu="folder-menu">Папка 1</div>
-    <div class="menu-item" data-menu="file-menu">Файл 1</div>
-    <div class="menu-item" data-menu="folder-menu">Папка 2</div>
-    <div class="menu-item" data-menu="file-menu">Файл 2</div>
+        <div class="menu-item" data-menu="context-menu-1">Элемент 1</div>
+        <div class="menu-item" data-menu="context-menu-2">Элемент 2</div>
+        <div class="menu-item" data-menu="context-menu-3">Элемент 3</div>
+    </div>
 
-    <div id="folder-menu" class="context-menu" style="display:none; position:absolute;">
+    <div class="context-menu" id="context-menu-1">
         <ul>
-            <li>Переименовать папку</li>
-            <li>Удалить папку</li>
+            <li>Действие 1</li>
+            <li>Действие 2</li>
+            <li>Действие 3</li>
         </ul>
     </div>
 
-    <div id="file-menu" class="context-menu" style="display:none; position:absolute;">
+    <div class="context-menu" id="context-menu-2">
         <ul>
-            <li>Открыть файл</li>
-            <li>Удалить файл</li>
+            <li>Действие A</li>
+            <li>Действие B</li>
+            <li>Действие C</li>
         </ul>
     </div>
-</div>
+
+
 
 
 @endsection

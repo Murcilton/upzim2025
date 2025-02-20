@@ -105,45 +105,58 @@ window.onload = function() {
 };
 // ============================= /PRELOADER ======================================
 
-// $('.form-check').click(
-//     function(){
-//         $(this).find(':radio').attr('checked','checked');
-//         //выделение всех чекбоксов на кликнутом контейнере, снять выделение через removeAttr("checked")
-// });
+// ============================= CONTEXT MENU SCRIPT ======================================
 
 const menus = document.querySelectorAll('.context-menu');
 
 document.querySelectorAll('.menu-item').forEach(item => {
     item.addEventListener('contextmenu', (e) => {
         e.preventDefault();
-        // Скрыть все меню
-        menus.forEach(menu => menu.style.display = 'none');
-        
-        // Получаем ID меню из атрибута data-menu
+
+        // Скрываем все контекстные меню
+        menus.forEach(menu => {
+            menu.classList.remove('show'); // Убираем класс show
+            menu.classList.add('fade'); // Добавляем класс fade для анимации исчезновения
+            menu.style.pointerEvents = 'none'; // Блокируем взаимодействие
+        });
+
         const menuId = item.getAttribute('data-menu');
         const menuToShow = document.getElementById(menuId);
         
-        // Показываем нужное меню, позиционируем относительно курсора
         if (menuToShow) {
-            menuToShow.style.cssText = `display: block; left: ${e.pageX + 10}px; top: ${e.pageY + 10}px;`;
+            console.log(`Позиция курсора: X=${e.pageX}, Y=${e.pageY}`);
+            menuToShow.style.left = `${e.pageX + 10}px`;
+            menuToShow.style.top = `${e.pageY + 10}px`;
+            menuToShow.classList.add('show');
+            menuToShow.classList.remove('fade'); 
+            menuToShow.style.pointerEvents = 'auto'; 
         }
     });
 });
 
 // Скрыть меню при клике вне
 window.addEventListener('click', () => {
-    menus.forEach(menu => menu.style.display = 'none');
-});
-
-// Обработка кликов по пунктам меню
-menus.forEach(menu => {
-    menu.querySelectorAll('li').forEach(option => {
-        option.addEventListener('click', () => {
-            alert(`Вы выбрали: ${option.textContent}`);
-            menu.style.display = 'none';
-        });
+    menus.forEach(menu => {
+        menu.classList.remove('show');
+        menu.classList.add('fade'); 
+        menu.style.pointerEvents = 'none'; 
     });
 });
+
+
+
+
+// Обработка кликов по пунктам меню
+// menus.forEach(menu => {
+//     menu.querySelectorAll('li').forEach(option => {
+//         option.addEventListener('click', () => {
+//             alert(`Вы выбрали: ${option.textContent}`);
+//             menu.style.display = 'none';
+//         });
+//     });
+// });
+
+// ============================= /CONTEXT MENU SCRIPT ======================================
 
 
 
