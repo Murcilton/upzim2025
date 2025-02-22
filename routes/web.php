@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\ListController;
 use Illuminate\Support\Facades\Auth;
@@ -45,4 +46,4 @@ Route::delete('/tasks/{id}', [ListController::class, 'destroy'])->name('delete')
 
 
 // CALENDAR
-
+Route::resource('calendars', CalendarController::class);

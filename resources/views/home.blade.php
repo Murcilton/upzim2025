@@ -14,6 +14,9 @@
 
             <div class="controls">
                 <div class="dropdown-button createTaskBtn">
+                    <div class="calendar">
+                        <a href="{{route('calendars.index')}}">Cal</a>
+                    </div>
                     <ul class="dropdown">
                         <div class="dropdown-title">
                             <span>Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></i></span>
