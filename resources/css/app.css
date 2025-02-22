@@ -1057,3 +1057,27 @@ input.file-to-folder-input[type="file"] {
     font-size: 14px;
     margin-left: 2px;
 }
+
+.addToFolder {
+    position: relative;
+    
+}
+
+.addModal .modal-title{
+    scrollbar-width: thin;
+    overflow-x: auto;
+   }
+   
+   .addModal .modal-title span:nth-child(4){
+       font-weight: 400 !important;
+       font-size: 17px;
+   }
+   
+   .addModal .modal-title .fa-turn-down{
+       position: relative;
+       top: 5px;
+   }
+
+.addModal .modal-body {
+    height: 50px;
+}
