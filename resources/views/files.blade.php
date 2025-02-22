@@ -42,29 +42,34 @@
                             <div class="folder-item ">
                                 <div class="folder">
                                     <div class="dropdown-button dropdown-folder-btn">
+
                                         <div class="context-menu" id="context-menu-{{ $folder->id }}">
                                             <div class="context-btns">
                                                 <div class="btnContext"><i class="fa-solid fa-chevron-right"
                                                         style="color: #000000;"></i>
-                                                        <i class="fa-solid fa-pen" style="color: #000000;"></i> Переименовать 
+                                                    <i class="fa-solid fa-pen" style="color: #000000;"></i> Переименовать
+                                                </div>
+                                                <div class="btnContext"><i class="fa-solid fa-chevron-right"
+                                                    style="color: #000000;"></i><button type="button" class="" data-bs-toggle="modal"
+                                                        data-bs-target="#exampleModal{{ $folder->id }}">
+                                                        <i class="fa-solid fa-file-circle-plus" style="color: #000000;"></i>
+                                                        Добавить файл
+                                                    </button>
                                                 </div>
                                                 <div class="btnContext"><i class="fa-solid fa-chevron-right"
                                                         style="color: #000000;"></i>
-                                                        <i class="fa-solid fa-file-circle-plus" style="color: #000000;"></i> Добавить файл
-                                                </div>
-                                                <div class="btnContext"><i class="fa-solid fa-chevron-right"
-                                                        style="color: #000000;"></i>
-                                                    
+
                                                     <form action="{{ route('destroy.folder', $folder->id) }}" method="POST"
                                                         style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="contextDelete"><i class="fa-regular fa-trash-can"
-                                                        style="color: #ff0000;"></i> Удалить </button>
+                                                                style="color: #ff0000;"></i> Удалить </button>
                                                     </form>
                                                 </div>
                                             </div>
                                         </div>
+
                                         <ul class="dropdown dropdown-folder">
 
                                             <div class="folder-add">
@@ -148,6 +153,42 @@
 
 
         @endif
+
+            @foreach ($folders as $folder)
+                <!-- Modal add to folder -->
+                <form action="{{ route('folder.add') }}" enctype="multipart/form-data" method="post">
+                    @csrf
+                    <div class="modal fade" id="exampleModal{{ $folder->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog ">
+                            <div class="modal-content editModal addModal">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                        <i class="fa-solid fa-file-circle-plus" style="color: #000000;"></i> <span class="fs-4">Добавить
+                                            файл в</span>
+                                        <br>
+                                        <span>"{{$folder->name}}"</span>
+                                    </h1>
+
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+
+                                            <input type="hidden" name="folderId" value="{{ $folder->id }}">
+                                            <div class="addToFolder">
+                                            <input type="file" name="file" id="file-to-folder-input-{{ $folder->id }}"
+                                                class="form-control " placeholder='Добавить файл в папку'>
+                                            </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btnnav">Добавить файл <i class="fa-solid fa-circle-check"
+                                            style="color: #2b2b2b; margin-left: 5px"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            @endforeach
 
             @foreach ($files as $file)
                 <!-- Modal move folder -->
