@@ -21,8 +21,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Auth::routes();
+
+// Home ===========================================================================================
+
 Route::get('/home', [ListController::class, 'index'])->name('home');
 Route::get('/statuses', [ListController::class, 'statuses'])->name('statuses');
+
+Route::post('/edit/{id}', [ListController::class, 'edit'])->name('edit');
+Route::post('/create', [ListController::class, 'create'])->name('create');
+
+Route::delete('/tasks/{id}', [ListController::class, 'destroy'])->name('delete');
+
+// /Home
+
+// Files and folders ===========================================================================================
 
 Route::get('/files', [FileController::class,'index'])->name('files');
 Route::post('/files-store', [FileController::class, 'store'])->name('store');
@@ -33,17 +46,15 @@ Route::post('/folders-add', [FileController::class, 'folderAdd'])->name('folder.
 Route::delete('/files/{id}', [FileController::class,'destroy'])->name('destroy.file');
 Route::delete('/folders/{id}', [FileController::class,'destroyFolder'])->name('destroy.folder');
 
+Route::post('/folder/edit', [FileController::class, 'folderEdit'])->name('folder.edit');
+Route::post('/file/edit', [FileController::class, 'fileEdit'])->name('file.edit');
+
 Route::post('/files/move', [FileController::class, 'move'])->name('files.move');
 
-Auth::routes();
+// /Files and folders
 
-Route::post('/edit/{id}', [ListController::class, 'edit'])->name('edit');
-Route::post('/create', [ListController::class, 'create'])->name('create');
+// CALENDAR ===========================================================================================
 
-Route::delete('/tasks/{id}', [ListController::class, 'destroy'])->name('delete');
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-
-// CALENDAR
 Route::resource('calendars', CalendarController::class);
+
+// /CALENDAR

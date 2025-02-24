@@ -8,6 +8,7 @@ use App\Models\Folder;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -117,6 +118,63 @@ class FileController extends Controller
             return redirect()->back()->with('error', 'Файл не был загружен. Пожалуйста, попробуйте еще раз.');
         }
     }
+
+    public function folderEdit(Request $request) {
+        $request->validate([
+            'folderId' => 'required|exists:folders,id',
+            'folderName' => 'required|string|max:255|regex:/^[\w\s\-]+$/', 
+        ]);
+    
+        $folderId = $request->folderId;
+        $folder = Folder::find($folderId);
+    
+        $oldPath = 'uploads/' . Auth::user()->storage_name . '/' . $folder->name;
+        $newPath = 'uploads/' . Auth::user()->storage_name . '/' . $request->folderName;
+    
+        if (\Storage::disk('public')->exists($oldPath)) {
+            \Storage::disk('public')->move($oldPath, $newPath);
+            
+            $folder->name = $request->folderName;
+            $folder->path = $newPath; 
+            $folder->save();
+    
+            $files = File::where('folder_id', $folderId)->get();
+            foreach ($files as $file) {
+                $file->path = 'uploads/' . Auth::user()->storage_name . '/' . $request->folderName . '/' . $file->name;
+                $file->save();
+            }
+    
+            return redirect()->back()->with('success', 'Имя папки успешно изменено!');
+        } else {
+            return redirect()->back()->with('error', 'Ошибка: старая папка не найдена!');
+        }
+    }
+
+    public function fileEdit(Request $request) {
+        $request->validate([
+            'fileId' => 'required|exists:files,id',
+            'fileName' => 'required|string|max:255|regex:/^[\w\s\-]+$/', 
+        ]);
+    
+        $fileId = $request->fileId;
+        $file = File::find($fileId);
+        $fileFolder = Folder::find($file->folder_id);
+    
+        $oldPath = $file->path;
+        $extension = pathinfo($file->name, PATHINFO_EXTENSION); 
+        $newPath = 'uploads/'. Auth::user()->storage_name. '/'. $fileFolder->name . '/'. $request->fileName . '.' . $extension;
+        
+        if (\Storage::disk('public')->exists($oldPath)) {
+            \Storage::disk('public')->move($oldPath, $newPath);
+            
+            $file->name = $request->fileName . '.' . $extension; 
+            $file->path = $newPath;
+            $file->save();
+        }
+    
+        return redirect()->back()->with('success', 'Имя файла успешно изменено!');
+    }
+    
 
     public function move(Request $request)
     {
