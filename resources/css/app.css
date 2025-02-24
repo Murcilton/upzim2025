@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* * {
 outline: 1px solid red;
@@ -13,7 +13,6 @@ body {
     overflow-y: scroll !important;
     padding-right: 0px !important;
     padding-bottom: 200px;
-
 }
 
 body a {
@@ -54,7 +53,6 @@ body a {
     gap: 10px;
     flex-direction: row;
     white-space: nowrap;
-
 }
 
 .panel {
@@ -105,7 +103,6 @@ body a {
 
 #date-checkbox {
     margin-left: -5px;
-
 }
 
 [type="checkbox"] {
@@ -113,7 +110,7 @@ body a {
     height: 0;
 }
 
-input[type="checkbox"]:checked~.date-input {
+input[type="checkbox"]:checked ~ .date-input {
     visibility: visible;
     opacity: 1;
     transform: translateX(0px);
@@ -148,7 +145,6 @@ input[type="checkbox"]:checked~.date-input {
     transition: 0.5s ease;
     border-radius: 18px;
     top: 180px;
-    
 }
 
 .modal-body {
@@ -182,7 +178,6 @@ input[type="checkbox"]:checked~.date-input {
 .inputEdit {
     margin-top: 10px;
     border-radius: 10px;
-
 }
 
 .descriptionEdit {
@@ -353,7 +348,6 @@ input[type="checkbox"]:checked~.date-input {
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 .dropdown ul {
@@ -373,7 +367,6 @@ input[type="checkbox"]:checked~.date-input {
 }
 
 .dropdown-items {
-    
     margin-top: 6px;
 }
 
@@ -427,14 +420,14 @@ input[type="checkbox"]:checked~.date-input {
     visibility: hidden;
 }
 
-.dropdownLayerBtn:hover+.dropdownLayer,
+.dropdownLayerBtn:hover + .dropdownLayer,
 .dropdownLayer:hover {
     max-height: 500px;
     padding-right: 15px;
     opacity: 1;
 }
 
-.dropdownLayerBtn:hover+.dropdownLayer li,
+.dropdownLayerBtn:hover + .dropdownLayer li,
 .dropdownLayer:hover li {
     opacity: 1;
     transform: translateY(0);
@@ -481,8 +474,6 @@ input[type="checkbox"]:checked~.date-input {
 
 /* ======================= /DROPDOWN =========================== */
 
-
-
 .cloud {
     position: relative !important;
 }
@@ -500,7 +491,6 @@ input[type="checkbox"]:checked~.date-input {
 .createTaskBtn .dropdown-items {
     position: relative !important;
     right: 18px;
-
 }
 
 .createTaskBtn .dropdown {
@@ -654,7 +644,6 @@ input.no-calendar[type="date"] {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 10px;
     margin-top: 40px;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
@@ -682,7 +671,7 @@ input.no-calendar[type="date"] {
 }
 
 .file-item h6 {
-position: relative;
+    position: relative;
 }
 
 .folder-create {
@@ -694,7 +683,6 @@ position: relative;
 
 .createFolderBtn .dropdown-items {
     transition: 0.4s ease !important;
-
 }
 
 .createFolderBtn .dropdown {
@@ -707,22 +695,20 @@ position: relative;
     height: 100px !important;
 }
 
-
-.createFolderBtn .dropdown:hover { 
+.createFolderBtn .dropdown:hover {
     max-width: 200px !important;
-
 }
 
-.createFolderBtn .dropdown:hover .dropdown-title { 
-margin-right: 20px;
+.createFolderBtn .dropdown:hover .dropdown-title {
+    margin-right: 20px;
 }
 
-.createFolderBtn .dropdown-items { 
+.createFolderBtn .dropdown-items {
     transition: 0.3s ease;
     scale: 0.4;
 }
 
-.createFolderBtn .dropdown:hover .dropdown-items { 
+.createFolderBtn .dropdown:hover .dropdown-items {
     scale: 1;
 }
 
@@ -741,7 +727,7 @@ margin-right: 20px;
 
 input.file-to-folder-input[type="file"] {
     display: none;
-  }
+}
 
 .file-to-folder-input {
     display: inline-block;
@@ -763,12 +749,10 @@ input.file-to-folder-input[type="file"] {
 .dropdown-folder .dropdown-items {
     margin-left: 180px;
     padding-bottom: 30px;
-    
 }
 
-.dropdown-folder li:hover{
+.dropdown-folder li:hover {
     margin-left: 1px;
-
 }
 
 .upload-to-folder {
@@ -786,19 +770,18 @@ input.file-to-folder-input[type="file"] {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: flex-start;
-    max-width: 160px; 
+    max-width: 160px;
     min-width: 150px;
-
 }
 
 .dropdown-folder .dropdown-title a {
-    flex: 1; 
+    flex: 1;
     position: relative;
     top: -4px;
 
-    overflow: hidden; 
-    white-space: nowrap; 
-    text-overflow: ellipsis; 
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .folder-add {
@@ -815,8 +798,6 @@ input.file-to-folder-input[type="file"] {
     position: relative;
     margin-left: 60px;
 } */
-
-
 
 .folder-actions {
     position: absolute;
@@ -866,7 +847,7 @@ input.file-to-folder-input[type="file"] {
 }
 
 .folder-add button {
-    color:rgb(0, 255, 0);
+    color: rgb(0, 255, 0);
     position: absolute;
     background: none;
     left: 23px;
@@ -878,19 +859,19 @@ input.file-to-folder-input[type="file"] {
 }
 
 .upload-to-folder i {
-    color: #000; 
-    transition: 0.3s ease; 
+    color: #000;
+    transition: 0.3s ease;
     opacity: 0;
     pointer-events: none;
 }
 
-.dropdown-folder:hover .folder-add .upload-to-folder i{
+.dropdown-folder:hover .folder-add .upload-to-folder i {
     opacity: 1;
     pointer-events: all;
     transform: translateX(0px);
 }
 
-.dropdown-folder:hover .folder-add button{
+.dropdown-folder:hover .folder-add button {
     opacity: 1;
     transform: translateX(0px);
 }
@@ -931,7 +912,6 @@ input.file-to-folder-input[type="file"] {
 .folder-items:hover .folder-item:not(:hover) {
     z-index: -1;
     pointer-events: none;
-
 }
 
 .folder-items:hover .folder-item:has(:hover) {
@@ -959,20 +939,19 @@ input.file-to-folder-input[type="file"] {
     overflow-y: auto;
     scrollbar-width: thin;
     padding: 13px;
-
 }
 
-.moveModal .modal-title{
- scrollbar-width: thin;
- overflow-x: auto;
+.moveModal .modal-title {
+    scrollbar-width: thin;
+    overflow-x: auto;
 }
 
-.moveModal .modal-title span:nth-child(4){
+.moveModal .modal-title span:nth-child(4) {
     font-weight: 400 !important;
     font-size: 17px;
 }
 
-.moveModal .modal-title .fa-turn-down{
+.moveModal .modal-title .fa-turn-down {
     position: relative;
     top: 5px;
 }
@@ -980,43 +959,41 @@ input.file-to-folder-input[type="file"] {
 /* ====================== Context menu =========================== */
 
 .context-menu {
-    transition: opacity 0.2s ease, transform 0.2s ease; 
+    transition: opacity 0.2s ease, transform 0.2s ease;
     box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, 0.24);
     border-radius: 4px 18px 18px 18px;
     opacity: 0;
     width: calc();
     pointer-events: none;
-    position: fixed; 
-    background-color: white; 
+    position: fixed;
+    background-color: white;
     z-index: 9999;
     transform: scale(0.9);
 }
 
 .context-btns {
-    padding: 10px; 
+    padding: 10px;
     margin: 0;
 }
 
 .btnContext {
-    padding: 5px 12px; 
-    cursor: pointer; 
-    transition: 0.3s ease; 
-    
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
 }
 
 .context-menu.show {
     opacity: 1;
-    visibility: visible; 
+    visibility: visible;
     transform: scale(1);
 }
 
 .context-menu.fade {
-    opacity: 0; 
-    visibility: hidden; 
-    
+    opacity: 0;
+    visibility: hidden;
 }
 
-.btnContext:hover .fa-chevron-right{
+.btnContext:hover .fa-chevron-right {
     opacity: 1;
     transform: translateX(0px);
 }
@@ -1035,14 +1012,14 @@ input.file-to-folder-input[type="file"] {
     transform: translateX(-5px);
 }
 
-.btnContext button { 
+.btnContext button {
     background: none;
     border: none;
     position: relative;
     right: 5px;
 }
 
-.btnContext i { 
+.btnContext i {
     font-size: 14px;
     margin-left: 2px;
 }
@@ -1060,24 +1037,61 @@ input.file-to-folder-input[type="file"] {
 
 .addToFolder {
     position: relative;
-    
 }
 
-.addModal .modal-title{
+.addModal .modal-title {
     scrollbar-width: thin;
     overflow-x: auto;
-   }
-   
-   .addModal .modal-title span:nth-child(4){
-       font-weight: 400 !important;
-       font-size: 17px;
-   }
-   
-   .addModal .modal-title .fa-turn-down{
-       position: relative;
-       top: 5px;
-   }
+}
+
+.addModal .modal-title span:nth-child(4) {
+    font-weight: 400 !important;
+    font-size: 17px;
+}
+
+.addModal .modal-title .fa-turn-down {
+    position: relative;
+    top: 5px;
+}
 
 .addModal .modal-body {
     height: 50px;
+}
+
+.alert {
+    position: fixed;
+    transition: 1s ease;
+    border-radius: 18px 18px 18px 18px;
+    margin-top: 90vh;
+    transform: translateY(-10px);
+    animation: pulse 2s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translateY(10px);
+        scale: 0.95;
+    }
+    100% {
+        scale: 1;
+        transform: translateY(-10px);
+    }
+}
+
+.notifications {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.alert-danger {
+    background-color: #d4edda70; 
+    border: 1px solid rgb(255, 0, 0);
+    font-weight: 600;
+}
+
+.alert-success {
+    background-color: #d4edda70; 
+    border: 1px solid rgb(0, 255, 0);
+    font-weight: 600;
 }

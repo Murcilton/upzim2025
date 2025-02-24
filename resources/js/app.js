@@ -155,3 +155,28 @@ window.addEventListener("click", () => {
 // });
 
 // ============================= /CONTEXT MENU SCRIPT ======================================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Уведомление об успехе
+    const successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+            successAlert.style.transform = 'translateY(6px)';
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 500); // Время исчезновения
+        }, 7000); // Время показа
+    }
+
+    // Уведомление об ошибке
+    const errorAlert = document.getElementById('error-alert');
+    if (errorAlert) {
+        setTimeout(() => {
+            errorAlert.style.opacity = '0';
+            setTimeout(() => {
+                errorAlert.style.display = 'none';
+            }, 500); // Время исчезновения
+        }, 7000); // Время показа
+    }
+});

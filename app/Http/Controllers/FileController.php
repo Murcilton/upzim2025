@@ -17,11 +17,10 @@ class FileController extends Controller
      */
     public function index()
     {
-
-
         $folders = Folder::where('user_id', Auth::user()->id)->get();
         $files = File::where('user_id', Auth::user()->id)->get();
-        return view('files', compact('files', 'folders'));
+        $rootFiles = File::where('user_id', Auth::user()->id)->whereNull('folder_id')->get();
+        return view('files', compact('files', 'rootFiles' , 'folders'));
     }
 
     /**
@@ -162,8 +161,11 @@ class FileController extends Controller
     
         $oldPath = $file->path;
         $extension = pathinfo($file->name, PATHINFO_EXTENSION); 
+        if ($file->folder_id !== null) {
         $newPath = 'uploads/'. Auth::user()->storage_name. '/'. $fileFolder->name . '/'. $request->fileName . '.' . $extension;
-        
+        } else {
+            $newPath = 'uploads/'. Auth::user()->storage_name . '/'. $request->fileName . '.' . $extension;
+        }
         if (\Storage::disk('public')->exists($oldPath)) {
             \Storage::disk('public')->move($oldPath, $newPath);
             

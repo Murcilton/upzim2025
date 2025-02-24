@@ -347,15 +347,66 @@
 
             <div class="files-cycle">
 
+                <div class="folder-create">
+                    <div class="dropdown-button createFolderBtn createTaskBtn">
+                        <ul class="dropdown">
+                            <div class="dropdown-title">
+                                <i class="fa-solid fa-file-circle-plus" style="color: #000000;"></i>
+                            </div>
+                            <div class="dropdown-items">
+                                <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+                                    @csrf
+                                    <li>
+                                        <input type="file" class="form-control inputEdit" name="file"
+                                            placeholder="Название" autocomplete="off">
+                                    </li>
+                                    <li>
+                                        <button type="submit" class="btnnav"><i class="fa-solid fa-check"
+                                                style="position: relative; bottom: 2px;"></i></button>
+                                    </li>
+                                </form>
+                            </div>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2>Файлы</h2>
                 <div class="file-items">
-                    @if (!empty($files) && $files->isNotEmpty())
-                        @foreach ($files as $file)
+                    @if (!empty($rootFiles) && $rootFiles->isNotEmpty())
+                    
+                        @foreach ($rootFiles as $file)
+
+                        <div class="context-menu menu-item" id="context-menu-{{ $file->id }}">
+                            <div class="context-btns">
+                                <div class="btnContext"><i class="fa-solid fa-chevron-right"
+                                        style="color: #000000;"></i>
+                                    <button type="button" class="" data-bs-toggle="modal"
+                                        data-bs-target="#editModal{{ $file->id }}">
+                                        <i class="fa-solid fa-pen" style="color: #000000;"></i>
+                                        Переименовать
+                                    </button>
+                                </div>
+                                <div class="btnContext"><i class="fa-solid fa-chevron-right"
+                                        style="color: #000000;"></i>
+
+                                    <form action="{{ route('destroy.file', $file->id) }}"
+                                        method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="contextDelete"><i
+                                                class="fa-regular fa-trash-can"
+                                                style="color: #ff0000;"></i> Удалить
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
                             @if ($file->folder_id == null)
-                                <div class="file-item">
+                                <div class="file-item menu-item" data-menu="context-menu-{{ $file->id }}">
                                     <a href="{{ asset('storage/' . $file->path) }}"><i class="fa-solid fa-file-alt"></i>
                                         {{ $file->name }}</a>
                                     <div class="file-actions">
-                                        <!-- <a href="{{ route('edit', $file->id) }}"><i class="fa-solid fa-pencil-alt"></i></a> -->
                                         <form action="{{ route('destroy.file', $file->id) }}" method="POST"
                                             style="display: inline;">
                                             @csrf
@@ -365,6 +416,7 @@
                                         </form>
                                     </div>
                                 </div>
+                                
                             @endif
                         @endforeach
                     @else
