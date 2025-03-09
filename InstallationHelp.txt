@@ -1,0 +1,120 @@
+===============================================================
+    
+    Заполнение БД (сидер): 
+
+composer require orangehill/iseed
+php artisan iseed my_table
+
+===============================================================
+
+    Перезапись текущего проекта (если остались незакоммиченные изменения)
+
+git reset HEAD --hard
+git pull origin master
+
+===============================================================
+
+    Готовая аутентификация
+
+composer require laravel/ui
+php artisan ui vue —auth
+php artisan migrate
+
+===============================================================
+
+    Ошибка с CORS для Vite
+
+server: {
+    hmr: {
+    host: 'localhost',
+    },
+    cors: {
+        origin: 'http://localhost', 
+        credentials: true,
+    },
+},
+
+===============================================================
+
+    Клонирование тяжелого проекта
+
+    git config --global http.postBuffer 524288000
+    git config --global http.maxRequestBuffer 524288000
+    git config --global core.compression 0
+
+===============================================================
+
+    Создание миграции для существующей таблицы
+
+    https://github.com/kitloong/laravel-migrations-generator
+    composer require --dev kitloong/laravel-migrations-generator
+    php artisan migrate:generate
+    php artisan migrate:generate --tables="table1,table2,table3,table4,table5"
+
+===============================================================
+
+    Загрузка файла с точным названием
+
+        // $request->validate(['file' => 'required|file']);
+        // $folderName = Auth::user()->name. '-' . Auth::user()->id . '-' . 'folder';
+        // if (!\Storage::exists('uploads/' . $folderName)) {
+        // \Storage::makeDirectory('uploads/' . $folderName);
+        // }
+        //     $fileName = Auth::user()->name . '-' . Carbon::now('Asia/Yekaterinburg')->format('Y-m-d_(H-i-s)') . ' (' . uniqid() . ')' . '.' . $request->file('file')->getClientOriginalExtension();
+        //     $path = $request->file('file')->storeAs('uploads/' . $folderName, $fileName, 'public');
+
+===============================================================
+
+    Vite на сервере
+
+import { defineConfig } from 'vite';
+import laravel from 'laravel-vite-plugin';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+    plugins: [
+        laravel({
+            input: [
+                'resources/sass/app.scss',
+                'resources/js/app.js',
+            ],
+            refresh: true,
+        }),
+        
+        vue({
+            template: {
+                transformAssetUrls: {
+                    base: null,
+                    includeAbsolute: false,
+                },
+            },
+        }),
+    ],
+    resolve: {
+        alias: {
+            vue: 'vue/dist/vue.esm-bundler.js',
+        },
+    },
+    
+    server: {
+        host: '0.0.0.0',
+        port: 1228,
+        hmr: {
+            host: 'murcilton.online', // '91.143.63.166'
+        },
+        cors: {
+            origin: 'http://murcilton.online',
+            credentials: true,
+        },
+    },
+
+});
+
+===============================================================
+
+    database.php в config должен быть прописан конкретно под используемую БД
+
+    как и .env
+
+===============================================================
+
