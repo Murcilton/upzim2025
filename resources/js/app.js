@@ -4,8 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-import './bootstrap';
-import { createApp } from 'vue';
+import "./bootstrap";
+import { createApp } from "vue";
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -15,8 +15,8 @@ import { createApp } from 'vue';
 
 const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+import ExampleComponent from "./components/ExampleComponent.vue";
+app.component("example-component", ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,22 +36,21 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
-
+app.mount("#app");
 
 // ============================= DROPDOWN LAYERS SCRIPT ======================================
-document.addEventListener('DOMContentLoaded', function () {
-    const dropdownContainer = document.querySelector('.dropdown');
-    const dropdownLayers = document.querySelectorAll('.dropdownLayer');
+document.addEventListener("DOMContentLoaded", function () {
+    const dropdownContainer = document.querySelector(".dropdown");
+    const dropdownLayers = document.querySelectorAll(".dropdownLayer");
 
     function openLayer(layer) {
-        layer.style.maxHeight = '500px';
-        layer.style.opacity = '1';
+        layer.style.maxHeight = "500px";
+        layer.style.opacity = "1";
     }
 
     function closeLayer(layer) {
-        layer.style.maxHeight = '0';
-        layer.style.opacity = '0';
+        layer.style.maxHeight = "0";
+        layer.style.opacity = "0";
     }
 
     // Наведения на dropdownLayer и кнопки
@@ -68,22 +67,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 closeLayer(dropdownLayers[i]);
             }
         };
-        button.addEventListener('mouseenter', handleMouseEnter);
-        button.addEventListener('mouseleave', handleMouseLeave);
-        layer.addEventListener('mouseenter', () => openLayer(layer));
-        layer.addEventListener('mouseleave', handleMouseLeave);
+        button.addEventListener("mouseenter", handleMouseEnter);
+        button.addEventListener("mouseleave", handleMouseLeave);
+        layer.addEventListener("mouseenter", () => openLayer(layer));
+        layer.addEventListener("mouseleave", handleMouseLeave);
     });
 
     // Обработчик покидания всего dropdown
-    dropdownContainer.addEventListener('mouseleave', () => {
+    dropdownContainer.addEventListener("mouseleave", () => {
         dropdownLayers.forEach(closeLayer);
     });
-    dropdownLayers.forEach(layer => {
-        layer.addEventListener('mouseenter', () => {
-            dropdownContainer.classList.add('hovering');
+    dropdownLayers.forEach((layer) => {
+        layer.addEventListener("mouseenter", () => {
+            dropdownContainer.classList.add("hovering");
         });
-        layer.addEventListener('mouseleave', () => {
-            dropdownContainer.classList.remove('hovering');
+        layer.addEventListener("mouseleave", () => {
+            dropdownContainer.classList.remove("hovering");
             dropdownLayers.forEach(closeLayer);
         });
     });
@@ -91,15 +90,15 @@ document.addEventListener('DOMContentLoaded', function () {
 // ============================= /DROPDOWN LAYERS SCRIPT ======================================
 
 // ============================= PRELOADER ======================================
-window.onload = function() {
-    setTimeout(function() {
-        document.querySelector('.preloader').style.opacity = '0';
-        setTimeout(function() {
-            document.querySelector('.preloader').style.display = 'none';
-            document.querySelector('.content').style.display = 'block'; 
-            setTimeout(function() {
-                document.querySelector('.content').style.opacity = '1'; 
-            }, 10); 
+window.onload = function () {
+    setTimeout(function () {
+        document.querySelector(".preloader").style.opacity = "0";
+        setTimeout(function () {
+            document.querySelector(".preloader").style.display = "none";
+            document.querySelector(".content").style.display = "block";
+            setTimeout(function () {
+                document.querySelector(".content").style.opacity = "1";
+            }, 10);
         }, 400); // Задержка перехода
     }, 400); // Задержка в мс
 };
@@ -107,44 +106,43 @@ window.onload = function() {
 
 // ============================= CONTEXT MENU SCRIPT ======================================
 
-const menus = document.querySelectorAll('.context-menu');
+const menus = document.querySelectorAll(".context-menu");
 
-document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('contextmenu', (e) => {
+document.querySelectorAll(".menu-item").forEach((item) => {
+    item.addEventListener("contextmenu", (e) => {
         e.preventDefault();
 
         // Скрываем все контекстные меню
-        menus.forEach(menu => {
-            menu.classList.remove('show'); // Убираем класс show
-            menu.classList.add('fade'); // Добавляем класс fade для анимации исчезновения
-            menu.style.pointerEvents = 'none'; // Блокируем взаимодействие
+        menus.forEach((menu) => {
+            menu.classList.remove("show"); // Убираем класс show
+            menu.classList.add("fade"); // Добавляем класс fade для анимации исчезновения
+            menu.style.pointerEvents = "none"; // Блокируем взаимодействие
         });
 
-        const menuId = item.getAttribute('data-menu');
+        const menuId = item.getAttribute("data-menu");
         const menuToShow = document.getElementById(menuId);
-        
+
         if (menuToShow) {
-            console.log(`Позиция курсора: X=${e.pageX}, Y=${e.pageY}`);
-            menuToShow.style.left = `${e.pageX + 10}px`;
-            menuToShow.style.top = `${e.pageY + 10}px`;
-            menuToShow.classList.add('show');
-            menuToShow.classList.remove('fade'); 
-            menuToShow.style.pointerEvents = 'auto'; 
+            const x = e.clientX + 10 + "px"; 
+            const y = e.clientY + 10 + "px"; 
+            menuToShow.style.left = x;
+            menuToShow.style.top = y;
+
+            menuToShow.classList.add("show");
+            menuToShow.classList.remove("fade");
+            menuToShow.style.pointerEvents = "auto";
         }
     });
 });
 
 // Скрыть меню при клике вне
-window.addEventListener('click', () => {
-    menus.forEach(menu => {
-        menu.classList.remove('show');
-        menu.classList.add('fade'); 
-        menu.style.pointerEvents = 'none'; 
+window.addEventListener("click", () => {
+    menus.forEach((menu) => {
+        menu.classList.remove("show");
+        menu.classList.add("fade");
+        menu.style.pointerEvents = "none";
     });
 });
-
-
-
 
 // Обработка кликов по пунктам меню
 // menus.forEach(menu => {
@@ -158,9 +156,27 @@ window.addEventListener('click', () => {
 
 // ============================= /CONTEXT MENU SCRIPT ======================================
 
+document.addEventListener('DOMContentLoaded', function() {
+    // Уведомление об успехе
+    const successAlert = document.getElementById('success-alert');
+    if (successAlert) {
+        setTimeout(() => {
+            successAlert.style.opacity = '0';
+            successAlert.style.transform = 'translateY(6px)';
+            setTimeout(() => {
+                successAlert.style.display = 'none';
+            }, 500); // Время исчезновения
+        }, 7000); // Время показа
+    }
 
-
-
-
-
-
+    // Уведомление об ошибке
+    const errorAlert = document.getElementById('error-alert');
+    if (errorAlert) {
+        setTimeout(() => {
+            errorAlert.style.opacity = '0';
+            setTimeout(() => {
+                errorAlert.style.display = 'none';
+            }, 500); // Время исчезновения
+        }, 7000); // Время показа
+    }
+});
