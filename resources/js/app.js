@@ -106,17 +106,19 @@ window.onload = function () {
 
 // ============================= CONTEXT MENU SCRIPT ======================================
 
-const menus = document.querySelectorAll(".context-menu");
+const contextMenus = document.querySelectorAll(".context-menu");
+const lmbMenus = document.querySelectorAll(".context-menu-lmb");
 
+// Обработка правого клика (context menu) ===================================================
 document.querySelectorAll(".menu-item").forEach((item) => {
     item.addEventListener("contextmenu", (e) => {
         e.preventDefault();
 
         // Скрываем все контекстные меню
-        menus.forEach((menu) => {
-            menu.classList.remove("show"); // Убираем класс show
-            menu.classList.add("fade"); // Добавляем класс fade для анимации исчезновения
-            menu.style.pointerEvents = "none"; // Блокируем взаимодействие
+        contextMenus.forEach((menu) => {
+            menu.classList.remove("show");
+            menu.classList.add("fade");
+            menu.style.pointerEvents = "none";
         });
 
         const menuId = item.getAttribute("data-menu");
@@ -135,24 +137,78 @@ document.querySelectorAll(".menu-item").forEach((item) => {
     });
 });
 
-// Скрыть меню при клике вне
-window.addEventListener("click", () => {
-    menus.forEach((menu) => {
-        menu.classList.remove("show");
-        menu.classList.add("fade");
-        menu.style.pointerEvents = "none";
+// Обработка левого клика (lmb menu) ===================================================
+document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+        e.preventDefault(); 
+
+        // Скрываем все контекстные меню
+        contextMenus.forEach((menu) => {
+            menu.classList.remove("show");
+            menu.classList.add("fade");
+            menu.style.pointerEvents = "none";
+        });
+
+        // Скрываем все lmb меню перед открытием нового
+        lmbMenus.forEach((menu) => {
+            menu.classList.remove("show");
+            menu.classList.add("fade");
+            menu.style.pointerEvents = "none";
+        });
+
+        // Получаем ID меню из data-атрибута
+        const menuId = item.getAttribute('data-menu');
+        const lmbMenu = document.getElementById(`context-menu-lmb-${menuId.split('-').pop()}`); // Извлекаем ID для lmb меню
+
+        if (lmbMenu) {
+            const x = e.clientX + 10 + 'px'; 
+            const y = e.clientY + 10 + 'px'; 
+            lmbMenu.style.left = x;
+            lmbMenu.style.top = y;
+            lmbMenu.classList.add('show'); 
+            lmbMenu.classList.remove('fade'); 
+            lmbMenu.style.pointerEvents = 'auto'; 
+        }
     });
 });
 
-// Обработка кликов по пунктам меню
-// menus.forEach(menu => {
-//     menu.querySelectorAll('li').forEach(option => {
-//         option.addEventListener('click', () => {
-//             alert(`Вы выбрали: ${option.textContent}`);
-//             menu.style.display = 'none';
-//         });
-//     });
-// });
+// Скрыть меню при клике вне
+window.addEventListener('click', (e) => {
+    if (!e.target.closest('.context-menu') && !e.target.closest('.menu-item')) {
+        contextMenus.forEach(menu => {
+            menu.classList.remove('show'); 
+        });
+    }
+
+    if (!e.target.closest('.context-menu-lmb') && !e.target.closest('.menu-item')) {
+        lmbMenus.forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
+});
+
+// Обработка кликов на кнопках в контекстных меню
+contextMenus.forEach(menu => {
+    menu.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            menu.classList.remove('show'); 
+            menu.classList.add('fade'); 
+            menu.style.pointerEvents = 'none'; 
+        });
+    });
+});
+
+// Обработка кликов на кнопках в lmb меню
+lmbMenus.forEach(menu => {
+    menu.querySelectorAll('button').forEach(button => {
+        button.addEventListener('click', () => {
+            menu.classList.remove('show'); 
+            menu.classList.add('fade'); 
+            menu.style.pointerEvents = 'none'; 
+        });
+    });
+});
+
 
 // ============================= /CONTEXT MENU SCRIPT ======================================
 

@@ -6,7 +6,6 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-    {{ Auth::user()->name }}
     <div class="list-container">
 
         <div class="panel">

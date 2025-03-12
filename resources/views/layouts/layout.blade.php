@@ -33,6 +33,28 @@
     @endif
     </div>
 
+    @if (Auth::user())
+    <div class="user">
+        <i class="fa-solid fa-user" style="color: #000000;"></i> {{ Auth::user()->name }}
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit" class="btnnav" style="color: #ff0000">Logout</button>
+        </form>
+    </div>
+    @else
+    <div class="auth">
+        <button onclick="window.location='{{route('login')}}'" class="btnnav ">
+            <i class="fa-solid fa-right-to-bracket" style="color: #000000;"></i>
+            <span>Авторизация</span>
+        </button>
+        <button onclick="window.location='{{route('register')}}'" class="btnnav ">
+            <i class="fa-solid fa-id-card" style="color: #000000;"></i>
+            <span>Регистрация</span>
+        </button>
+    </div>
+    
+    @endif
+
     @yield('content')
     </div>
 
