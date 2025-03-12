@@ -2,6 +2,10 @@
 
 @section('content')
 
+<head>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
     {{ Auth::user()->name }}
     <div class="list-container">
         <div class="panel">
@@ -14,9 +18,6 @@
 
             <div class="controls">
                 <div class="dropdown-button createTaskBtn">
-                    <div class="calendar">
-                        <a href="{{route('calendars.index')}}">Cal</a>
-                    </div>
                     <ul class="dropdown">
                         <div class="dropdown-title">
                             <span>Создать задачу <i class="fa-solid fa-pen-to-square" style="color: #000000; margin-left: 4px"></i></i></span>
@@ -116,7 +117,10 @@
                     </ul>
                 </div>
                 <div class="btnCloud">
-                    <button onclick="window.location='{{route('files')}}'" class="btnnav "><span>Файловое хранилище</span> <i class="fa-solid fa-cloud-arrow-up" style="color: #000000; margin-left: 4px"></i></button>
+                    <button onclick="window.location='{{route('files')}}'" class="btnnav "><span>Файлы</span> <i class="fa-solid fa-cloud-arrow-up" style="color: #000000; margin-left: 4px"></i></button>
+                </div>
+                <div class="calendar">
+                    <button class="btnnav"><a href="{{route('calendars.index')}}" >Календарь <i class="fa-solid fa-calendar-days" style="color: #000000; margin-left: 4px"></i></a></button>
                 </div>
 
                 {{-- ========================================= /Dropdown ========================================= --}}
