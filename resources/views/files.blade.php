@@ -2,6 +2,10 @@
 
 @section('content')
 
+<head>
+@vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+
     <div class="list-container">
         <div class="files-title">
             <h1>Файлы</h1>
